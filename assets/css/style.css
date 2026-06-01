@@ -97,33 +97,49 @@ h3 {
     justify-content: center;
     font-size: 16px;
 }
-
+/* Style for each to-do list item */
 ul li {
-    list-style: none;
+    list-style: none; /* removes default bullet points */
     padding: 10px;
     font-size: 17px;
-    padding: 12px 8px 12px 50px;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
 
+    /* custom padding (top right bottom left) 
+       extra left space for the icon */
+    padding: 12px 8px 12px 50px;
+
+    user-select: none; /* prevents text from being selected */
+    cursor: pointer;   /* shows pointer when hovering */
+    position: relative; /* allows positioning of ::before element */
 }
+
+/* Add custom icon before each list item */
 ul li::before {
-    content:" ";
+    content:" "; /* required to display pseudo-element */
     position: absolute;
+
+    /* size of the icon */
     height: 28px;
     width: 28px;
-    border-radius: 50%;
-    background-image:url(../images/uncheckedToDoList.png);
+
+    border-radius: 50%; /* makes it circular */
+
+    /* unchecked icon */
+    background-image: url(../images/uncheckedToDoList.png);
     background-size: cover;
     background-position: center;
+
+    /* position icon to the left of text */
     left: 8px;
     top: 12px;
 }
+
+/* Style when a task is marked as completed */
 ul li.checked {
-    text-decoration: line-through;
-    color: #888;
+    text-decoration: line-through; /* strike-through text */
+    color: #888; /* grey color for completed task */
 }
+
+/* Change icon when task is checked */
 ul li.checked::before {
-    background-image:url(../images/checkedToDoList.png);
+    background-image: url(../images/checkedToDoList.png);
 }
