@@ -8,7 +8,7 @@
 /* Body styling with font and gradient background */
 body {
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #1e03ed, #03bafc);
+    background: linear-gradient(135deg, rgb(250, 239, 218), #c8e3ed);
 }
 
 /* Apply Alegreya font to headings */
@@ -23,9 +23,10 @@ h3 {
     width: 100%;
     min-height: 100vh;
     padding: 10px;
+
 }
 
-/* To-do app card styling */
+/*++++++++++++++++++++++++++++++++++++++++++++++++++ To-do app card styling */
 .todo-app {
     width: 100%;
     max-width: 600px;
@@ -89,7 +90,7 @@ h3 {
     width: 80px;
     height: 40px;
     border: none;
-    background-color:rgb(247, 117, 18);
+    background-color: rgb(247, 117, 18);
     color: white;
     border-radius: 25px;
     display: flex;
@@ -97,9 +98,11 @@ h3 {
     justify-content: center;
     font-size: 16px;
 }
+
 /* Style for each to-do list item */
 ul li {
-    list-style: none; /* removes default bullet points */
+    list-style: none;
+    /* removes default bullet points */
     padding: 10px;
     font-size: 17px;
 
@@ -107,21 +110,25 @@ ul li {
        extra left space for the icon */
     padding: 12px 8px 12px 50px;
 
-    user-select: none; /* prevents text from being selected */
-    cursor: pointer;   /* shows pointer when hovering */
-    position: relative; /* allows positioning of ::before element */
+    /*user-select: none; /* prevents text from being selected */
+    cursor: pointer;
+    /* shows pointer when hovering */
+    position: relative;
+    /* allows positioning of ::before element */
 }
 
 /* Add custom icon before each list item */
 ul li::before {
-    content:" "; /* required to display pseudo-element */
+    content: " ";
+    /* required to display pseudo-element */
     position: absolute;
 
     /* size of the icon */
     height: 28px;
     width: 28px;
 
-    border-radius: 50%; /* makes it circular */
+    border-radius: 50%;
+    /* makes it circular */
 
     /* unchecked icon */
     background-image: url(../images/uncheckedToDoList.png);
@@ -135,8 +142,10 @@ ul li::before {
 
 /* Style when a task is marked as completed */
 ul li.checked {
-    text-decoration: line-through; /* strike-through text */
-    color: #888; /* grey color for completed task */
+    text-decoration: line-through;
+    /* strike-through text */
+    color: #888;
+    /* grey color for completed task */
 }
 
 /* Change icon when task is checked */
@@ -146,26 +155,245 @@ ul li.checked::before {
 
 /* Style for the delete button (span) inside each list item */
 ul li span {
-    position: absolute; /* positions the span relative to the li */
-    right: 0; /* places it on the right side */
-    top: 5px; /* slightly down from the top */
+    position: absolute;
+    /* positions the span relative to the li */
+    right: 0;
+    /* places it on the right side */
+    top: 5px;
+    /* slightly down from the top */
 
     width: 40px;
-    height: 40px;   
+    height: 40px;
 
-    border-radius: 50%; /* makes the span circular (like a button) */
+    border-radius: 50%;
+    /* makes the span circular (like a button) */
 
-    color: #555; /* default icon color (grey) */
-    font-size: 22px; /* size of the "×" icon */
+    color: #555;
+    /* default icon color (grey) */
+    font-size: 22px;
+    /* size of the "×" icon */
 
-    line-height: 40px; /* vertically centers the icon */
-    text-align: center; /* horizontally centers the icon */
+    line-height: 40px;
+    /* vertically centers the icon */
+    text-align: center;
+    /* horizontally centers the icon */
 
-    cursor: pointer; /* changes cursor to pointer on hover */
+    cursor: pointer;
+    /* changes cursor to pointer on hover */
 }
 
 /* Hover effect for the delete button */
 ul li span:hover {
-    background-color: #f0f0f0; /* light grey background on hover */
-    color: orangered; /* changes icon color to red on hover */
+    background-color: #f0f0f0;
+    /* light grey background on hover */
+    color: orangered;
+    /* changes icon color to red on hover */
 }
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++ Weather API styling */
+/* Main container for the weather app */
+.weather-container {
+    max-width: 400px;
+    /* Fixed width */
+    height: 555px;
+    /* Fixed height */
+    color: white;
+    /* Text color */
+    background: linear-gradient(135deg, rgb(17, 153, 243), #d0cbf0);
+    /* Gradient background */
+    border-radius: 16px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0);
+    /* Shadow effect */
+    padding: 20px;
+    /* Space inside container */
+    margin: 20px auto;
+    /* Center horizontally */
+    position: relative;
+    /* Allows absolute positioning inside */
+}
+
+/* Container for input and search button */
+.search-box {
+    position: relative;
+    /* Needed for positioning child elements */
+    display: flex;
+    /* Align items in a row */
+    align-items: center;
+    /* Center vertically */
+    gap: 10px;
+    /* Space between items */
+    width: 100%;
+    height: 45px;
+}
+
+/* Style for the input field */
+.search-box input {
+    position: absolute;
+    /* Positioned inside search-box */
+    width: 95%;
+    /* Full width */
+    height: 80%;
+    /* Slightly smaller height */
+    flex: 1;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* Light border */
+    outline: none;
+    /* Remove default outline */
+    border-radius: 60px;
+    /* Capsule/rounded shape */
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    /* Transparent background */
+    text-transform: uppercase;
+    /* Converts text to uppercase */
+    padding: 0 48px 0 42px;
+    /* Space inside (right side leaves room for button) */
+}
+
+/* Style for placeholder text inside input */
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    /* Lighter color for placeholder */
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    /* Capitalize placeholder text only */
+
+}
+
+/* Search button (magnifying glass icon) */
+.search-box button {
+    color: white;
+    /* Icon color */
+    position: absolute;
+    right: 0;
+    /* Align to the right of input */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    /* Makes button circular */
+    border: none;
+    background-color: transparent;
+    /* No background */
+    font-size: 14px;
+    padding: 0 40px 0 5px;
+    /* Adjust internal spacing */
+    cursor: pointer;
+    /* Show pointer on hover */
+}
+
+/* =====================================Container for displaying weather info */
+.weather-box {
+    text-align: center;
+    /* Center text */
+    color: white;
+    /* White text color */
+    line-height: 1;
+    /* Compact line spacing */
+}
+
+/* Weather image (icon) */
+.weather-box img {
+    width: 50%;
+    /* Scale image to half container width */
+}
+
+/* Temperature text styling */
+.weather-box .temperature {
+    position: relative;
+    /* For positioning °C */
+    font-size: 60px;
+    /* Large size */
+    font-weight: bold;
+    margin: 20px 0 6px -30px;
+    /* Adjust spacing and shift left */
+}
+
+/* Degree symbol (°C) styling */
+.weather-box .temperature span {
+    position: absolute;
+    /* Position relative to temperature */
+    font-size: 20px;
+    top: 0;
+    margin-left: 4px;
+    /* Slight spacing from number */
+}
+
+/* Weather description text (e.g., Sunny, Rainy) */
+.weather-box .description {
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+    /* Capitalize first letter */
+}
+
+/* Style for the city name */
+.weather-box .city {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/*================================= Container for additional weather details (humidity, wind speed) */
+.weather-details {
+    position: absolute;
+    /* Position at the bottom of weather container */
+    bottom: 20px;
+    /* Space from bottom */
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    /* Padding on sides */
+    display: flex;
+    /* Align items in a row */
+    justify-content: space-around;
+    /* Evenly space items */
+    margin-top: 20px;
+    /* Space above details */
+}
+
+/* Individual detail item (e.g., humidity, wind speed) */
+.weather-details .humidity,
+.weather-details .wind {
+    display: flex;
+    /* Align icon and text in a row */
+   justify-content: center;
+    /* Center items horizontally */
+    align-items: center;
+    /* Center items vertically */  
+      
+    text-align: left;
+    /* Align text to the left of the icon */
+ 
+}
+
+/* Icons for humidity and wind speed */
+.weather-details .humidity img,
+.weather-details .wind img {
+    width: 30px;;
+    /* Size of the icons */
+    margin-right: 10px;
+    /* Slight spacing from text */
+}
+
+/* Style for the text of humidity and wind speed */
+.weather-details .humidity span,
+.weather-details .wind span {
+    display: inline-block;
+    /* Ensure text is treated as a block for spacing */
+    font-size: 18px;   
+    margin-top:10px;
+     /* Adjust vertical alignment with icon */
+}
+.weather-details .humidity p,
+.weather-details .wind p {
+    font-size: 12px;   
+   line-height: 1;
+     /* Adjust vertical alignment with icon */    
+}
+
+/*===================
+ Responsive adjustments for smaller screens
+ ========================================= */

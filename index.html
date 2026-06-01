@@ -25,19 +25,86 @@
 
 <body>
 
-<!--weather API integration -->
+    <!--weather API integration -->
+    <!-- Main weather app container -->
+    <div class="weather-container">
 
-    <div class="weather container">
-        <h1 class="h2 weather-title">Weather</h1>
+        <!-- Title of the weather section -->
+        <h1 class="h2 weather-title text-center">Weather</h1>
+
+        <!-- Search box where user enters city name -->
         <div class="search-box">
-            <input type="text" id="city-input" class="form-control" placeholder="Enter city name">
-            <button id="search-btn" class="btn btn-primary">Search</button>
+            <!-- Input field for typing the city -->
+            <input type="text" id="city-input" placeholder="Enter city name">
+
+            <!-- Button to trigger search (uses Font Awesome icon) -->
+            <button id="search-btn" class="btn">
+                <i class="fa-brands fa-sistrix"></i>
+            </button>
         </div>
+
+        <!-- Weather information display section -->
+        <div class="weather-box">
+            <div class="box">
+                <!-- Container for weather details -->
+                <div class="info-weather">
+                    <div class="weather">
+
+                        <!-- Weather icon (changes based on condition) -->
+                        <img id="weather-icon" src="assets/images/clear.png" alt="Weather Icon" class="img-fluid" />
+
+                        <!-- Weather description (e.g., Sunny, Rainy) -->
+                        <p class="description">Sunny</p>
+
+                        <!-- Temperature display -->
+                        <p id="temperature" class="temperature">
+                            16<span>°C</span>
+                        </p>
+
+                        <!-- City name display -->
+                        <p id="city" class="city">New York</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional weather details (e.g., humidity) -->
+        <div class="weather-details">
+            <!-- Humidity icon and value -->
+            <div class="humidity">
+                <img src="assets/images/humidity.png" alt="Humidity Icon" class="img-fluid" >
+                <div class="text">
+                    <div id="info-humidity" class="info-humidity">
+                     
+                        <span>60%</span>
+                        <p class="humidity-text">Humidity</p>
+                    </div>
+                </div>              
+            </div>
+              <!-- Wind icon and value -->
+                <div class="wind">
+                    <img src="assets/images/wind.png" alt="Wind Icon" class="img-fluid" >
+                    <div class="text">
+                        <div id="info-wind" class="info-wind">
+                        
+                            <span>10 km/h</span>
+                            <p class="wind-text">Wind Speed</p>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+    </div>
     </div>
 
 
 
-    
+
+
+
+
     <!-- Main container -->
     <div class="container">
         <!-- To-do app card -->
@@ -73,6 +140,8 @@
 
     <!-- Bootstrap JS bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/68e551a4bc.js" crossorigin="anonymous"></script>
 </body>
 
 
