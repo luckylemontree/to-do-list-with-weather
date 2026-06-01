@@ -8,7 +8,7 @@
 /* Body styling with font and gradient background */
 body {
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #dad7f2, #ede8cd);
+    background: linear-gradient(135deg, #1e03ed, #03bafc);
 }
 
 /* Apply Alegreya font to headings */
@@ -169,4 +169,3 @@ ul li span:hover {
     background-color: #f0f0f0; /* light grey background on hover */
     color: orangered; /* changes icon color to red on hover */
 }
-``
