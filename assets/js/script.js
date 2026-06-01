@@ -1,3 +1,53 @@
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++Script for To-do List App with Weather API+++
+const weatherContainer = document.querySelector('.weather-container');
+const weatherBox = document.querySelector('.weather-box');
+const weatherDetails = document.querySelector('.weather-details');
+
+
+
+// Function to fetch weather data from OpenWeatherMap API       
+async function checkWeather() {
+    const city = document.querySelector('.search-box input').value;
+    const apiKey = 'f56768d8967f3a3fddcf238efff96c78'; // Replace with your OpenWeatherMap API key
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    if (city === '') {
+        return;
+    }
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            alert('City not found. Please enter a valid city name.');
+            document.querySelector('.search-box input').value = '';
+            throw new Error('City not found');
+        }
+        const data = await response.json();
+
+      
+        displayWeather(data);
+
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
+
+
+function displayWeather(data) {
+    document.querySelector('.city').innerText = `${data.name}, ${data.sys.country}`;
+    document.querySelector('.temperature').innerHTML = `${Math.round(data.main.temp)}<span>°C</span>`;
+    document.querySelector('.description').innerText = data.weather[0].description;
+    document.querySelector('.weather-box img').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+    document.querySelector('.info-humidity span').innerText = `${data.main.humidity}%`;
+    document.querySelector('.info-wind span').innerText = `${data.wind.speed} km/h`;
+
+
+}
+
+
+
+//++++++++++++++++++++++++++++++ To-do app functionality+++++++++++++++++++++
+
 // Get the input field element (where user types a task)
 const todoInput = document.getElementById('inputbox-todo');
 

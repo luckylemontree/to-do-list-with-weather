@@ -3,12 +3,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: 1px solid red;
 }
 
 /* Body styling with font and gradient background */
 body {
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, rgb(250, 239, 218), #c8e3ed);
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 /* Apply Alegreya font to headings */
@@ -18,15 +21,241 @@ h3 {
     font-family: 'Alegreya', serif;
 }
 
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++ Weather API styling */
+/* Main container for the weather app */
+.weather-container {
+    width: 90%;
+    max-width: 470px;
+    /* Fixed width */
+   
+    color: white;
+    /* Text color */
+    background: rgba(255, 255, 255, 0.1);
+    /* Gradient background */
+    backdrop-filter: blur(100px);
+    /* Blur effect for frosted glass look */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* Subtle border */
+    border-radius: 16px;
+    /* Rounded corners */
+    
+  
+    margin: 20px auto;
+    /* Center horizontally */
+    position: relative;
+    /* Allows absolute positioning inside */
+}
+
+/* Container for input and search button */
+.search-box {
+    position: relative;
+    /* Needed for positioning child elements */
+    display: flex;
+    /* Align items in a row */
+    align-items: center;
+    /* Center vertically */
+    gap: 10px;
+    /* Space between items */
+    width: 100%;
+    height: 45px;
+}
+
+/* Style for the input field */
+.search-box input {
+    position: absolute;
+    /* Positioned inside search-box */
+    width: 80%;
+    /* Full width */
+    height: 80%;
+    /* Slightly smaller height */
+    flex: 1;
+    
+    border: 2px solid rgba(255, 255, 255,0.7);
+    /* Light border */
+
+    outline: none;
+    /* Remove default outline */
+    border-radius: 60px;
+    /* Capsule/rounded shape */
+
+    color: white;
+    font-size: 16px;
+   
+
+    background-color: transparent;
+    /* Transparent background */
+    text-transform: capitalize;
+    /* Converts text to capitalize   */
+    padding: 5px 48px 5px 42px;
+    /* Space inside (right side leaves room for button) */
+}
+
+
+
+.search-box input:hover {
+    border-color: rgba(255, 255, 255, 0.9);
+    /* Brighter border on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Slight background on hover */
+}
+
+/* Style for placeholder text inside input */
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    /* Lighter color for placeholder */
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    /* Capitalize placeholder text only */
+
+}
+
+/* Search button (magnifying glass icon) */
+.search-box button {
+    color: white;
+    /* Icon color */
+    position: absolute;
+    right: 0;
+    /* Align to the right of input */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    /* Makes button circular */
+    border: none;
+    background-color: transparent;
+    /* No background */
+    font-size: 14px;
+    padding: 0 40px 0 5px;
+    /* Adjust internal spacing */
+    cursor: pointer;
+    /* Show pointer on hover */
+}
+
+/* =====================================Container for displaying weather info */
+.weather-info {
+    display: none;
+    /* Hidden by default, shown when data is loaded */
+   
+}
+.weather-box {
+    text-align: center;
+    /* Center text */
+    color: white;
+    /* White text color */
+    line-height: 1;
+    /* Compact line spacing */
+}
+
+/* Weather image (icon) */
+.weather-box img {
+    width: 50%;
+    /* Scale image to half container width */
+}
+
+/* Temperature text styling */
+.weather-box .temperature {
+    position: relative;
+    /* For positioning °C */
+    font-size: 60px;
+    /* Large size */
+    font-weight: bold;
+    margin: 20px 0 6px -30px;
+    /* Adjust spacing and shift left */
+}
+
+/* Degree symbol (°C) styling */
+.weather-box .temperature span {
+    position: absolute;
+    /* Position relative to temperature */
+    font-size: 20px;
+    top: 0;
+    margin-left: 4px;
+    /* Slight spacing from number */
+}
+
+/* Weather description text (e.g., Sunny, Rainy) */
+.weather-box .description {
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+    /* Capitalize first letter */
+}
+
+/* Style for the city name */
+.weather-box .city {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/*================================= Container for additional weather details (humidity, wind speed) */
+.weather-details {
+   position: static; 
+    bottom: 20px;
+    /* Space from bottom */
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    /* Padding on sides */
+    display: flex;
+    /* Align items in a row */
+    justify-content: space-around;
+    /* Evenly space items */
+    margin-top: 20px;
+    /* Space above details */
+}
+
+/* Individual detail item (e.g., humidity, wind speed) */
+.weather-details .humidity,
+.weather-details .wind {
+    display: flex;
+    /* Align icon and text in a row */
+   justify-content: center;
+    /* Center items horizontally */
+    align-items: center;
+    /* Center items vertically */  
+      
+    text-align: left;
+    /* Align text to the left of the icon */
+ 
+}
+
+/* Icons for humidity and wind speed */
+.weather-details .humidity img,
+.weather-details .wind img {
+    width: 30px;;
+    /* Size of the icons */
+    margin-right: 10px;
+    /* Slight spacing from text */
+}
+
+/* Style for the text of humidity and wind speed */
+.weather-details .humidity span,
+.weather-details .wind span {
+    display: inline-block;
+    /* Ensure text is treated as a block for spacing */
+    font-size: 18px;   
+    margin-top:10px;
+     /* Adjust vertical alignment with icon */
+}
+.weather-details .humidity p,
+.weather-details .wind p {
+    font-size: 12px;   
+   line-height: 1;
+     /* Adjust vertical alignment with icon */    
+}
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++ To-do app card styling */
 /* Main container setup */
 .container {
+    margin-top: 100px;
     width: 100%;
-    min-height: 100vh;
+    
     padding: 10px;
 
 }
 
-/*++++++++++++++++++++++++++++++++++++++++++++++++++ To-do app card styling */
 .todo-app {
     width: 100%;
     max-width: 600px;
@@ -35,6 +264,8 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0);
     padding: 40px 30px 70px;
     margin: 100px auto 20px;
+    color:black;
+     /* Text color */
 }
 
 /* Header styling with icon alignment */
@@ -188,210 +419,6 @@ ul li span:hover {
     /* light grey background on hover */
     color: orangered;
     /* changes icon color to red on hover */
-}
-
-
-/*++++++++++++++++++++++++++++++++++++++++++++++++++ Weather API styling */
-/* Main container for the weather app */
-.weather-container {
-    max-width: 400px;
-    /* Fixed width */
-    height: 555px;
-    /* Fixed height */
-    color: white;
-    /* Text color */
-    background: linear-gradient(135deg, rgb(17, 153, 243), #d0cbf0);
-    /* Gradient background */
-    border-radius: 16px;
-    /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0);
-    /* Shadow effect */
-    padding: 20px;
-    /* Space inside container */
-    margin: 20px auto;
-    /* Center horizontally */
-    position: relative;
-    /* Allows absolute positioning inside */
-}
-
-/* Container for input and search button */
-.search-box {
-    position: relative;
-    /* Needed for positioning child elements */
-    display: flex;
-    /* Align items in a row */
-    align-items: center;
-    /* Center vertically */
-    gap: 10px;
-    /* Space between items */
-    width: 100%;
-    height: 45px;
-}
-
-/* Style for the input field */
-.search-box input {
-    position: absolute;
-    /* Positioned inside search-box */
-    width: 95%;
-    /* Full width */
-    height: 80%;
-    /* Slightly smaller height */
-    flex: 1;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    /* Light border */
-    outline: none;
-    /* Remove default outline */
-    border-radius: 60px;
-    /* Capsule/rounded shape */
-    font-size: 16px;
-    font-weight: bold;
-    background-color: transparent;
-    /* Transparent background */
-    text-transform: uppercase;
-    /* Converts text to uppercase */
-    padding: 0 48px 0 42px;
-    /* Space inside (right side leaves room for button) */
-}
-
-/* Style for placeholder text inside input */
-.search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-    /* Lighter color for placeholder */
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: capitalize;
-    /* Capitalize placeholder text only */
-
-}
-
-/* Search button (magnifying glass icon) */
-.search-box button {
-    color: white;
-    /* Icon color */
-    position: absolute;
-    right: 0;
-    /* Align to the right of input */
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    /* Makes button circular */
-    border: none;
-    background-color: transparent;
-    /* No background */
-    font-size: 14px;
-    padding: 0 40px 0 5px;
-    /* Adjust internal spacing */
-    cursor: pointer;
-    /* Show pointer on hover */
-}
-
-/* =====================================Container for displaying weather info */
-.weather-box {
-    text-align: center;
-    /* Center text */
-    color: white;
-    /* White text color */
-    line-height: 1;
-    /* Compact line spacing */
-}
-
-/* Weather image (icon) */
-.weather-box img {
-    width: 50%;
-    /* Scale image to half container width */
-}
-
-/* Temperature text styling */
-.weather-box .temperature {
-    position: relative;
-    /* For positioning °C */
-    font-size: 60px;
-    /* Large size */
-    font-weight: bold;
-    margin: 20px 0 6px -30px;
-    /* Adjust spacing and shift left */
-}
-
-/* Degree symbol (°C) styling */
-.weather-box .temperature span {
-    position: absolute;
-    /* Position relative to temperature */
-    font-size: 20px;
-    top: 0;
-    margin-left: 4px;
-    /* Slight spacing from number */
-}
-
-/* Weather description text (e.g., Sunny, Rainy) */
-.weather-box .description {
-    font-size: 22px;
-    font-weight: 500;
-    text-transform: capitalize;
-    /* Capitalize first letter */
-}
-
-/* Style for the city name */
-.weather-box .city {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/*================================= Container for additional weather details (humidity, wind speed) */
-.weather-details {
-    position: absolute;
-    /* Position at the bottom of weather container */
-    bottom: 20px;
-    /* Space from bottom */
-    left: 0;
-    width: 100%;
-    padding: 0 20px;
-    /* Padding on sides */
-    display: flex;
-    /* Align items in a row */
-    justify-content: space-around;
-    /* Evenly space items */
-    margin-top: 20px;
-    /* Space above details */
-}
-
-/* Individual detail item (e.g., humidity, wind speed) */
-.weather-details .humidity,
-.weather-details .wind {
-    display: flex;
-    /* Align icon and text in a row */
-   justify-content: center;
-    /* Center items horizontally */
-    align-items: center;
-    /* Center items vertically */  
-      
-    text-align: left;
-    /* Align text to the left of the icon */
- 
-}
-
-/* Icons for humidity and wind speed */
-.weather-details .humidity img,
-.weather-details .wind img {
-    width: 30px;;
-    /* Size of the icons */
-    margin-right: 10px;
-    /* Slight spacing from text */
-}
-
-/* Style for the text of humidity and wind speed */
-.weather-details .humidity span,
-.weather-details .wind span {
-    display: inline-block;
-    /* Ensure text is treated as a block for spacing */
-    font-size: 18px;   
-    margin-top:10px;
-     /* Adjust vertical alignment with icon */
-}
-.weather-details .humidity p,
-.weather-details .wind p {
-    font-size: 12px;   
-   line-height: 1;
-     /* Adjust vertical alignment with icon */    
 }
 
 /*===================

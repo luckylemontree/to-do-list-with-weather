@@ -30,7 +30,7 @@
     <div class="weather-container">
 
         <!-- Title of the weather section -->
-        <h1 class="h2 weather-title text-center">Weather</h1>
+        <h1 class="h3 weather-title text-center">Weather</h1>
 
         <!-- Search box where user enters city name -->
         <div class="search-box">
@@ -38,110 +38,102 @@
             <input type="text" id="city-input" placeholder="Enter city name">
 
             <!-- Button to trigger search (uses Font Awesome icon) -->
-            <button id="search-btn" class="btn">
+            <button id="search-btn" class="btn" onclick="checkWeather()">
                 <i class="fa-brands fa-sistrix"></i>
             </button>
         </div>
 
         <!-- Weather information display section -->
-        <div class="weather-box">
-            <div class="box">
-                <!-- Container for weather details -->
-                <div class="info-weather">
-                    <div class="weather">
+        <div class="weather-info">
 
-                        <!-- Weather icon (changes based on condition) -->
-                        <img id="weather-icon" src="assets/images/clear.png" alt="Weather Icon" class="img-fluid" />
+            <div class="weather-box">
+                <div class="box">
+                    <!-- Container for weather details -->
+                    <div class="info-weather">
+                        <div class="weather">
 
-                        <!-- Weather description (e.g., Sunny, Rainy) -->
-                        <p class="description">Sunny</p>
+                            <!-- Weather icon (changes based on condition) -->
+                            <img id="weather-icon" src="assets/images/clear.png" alt="Weather Icon" class="img-fluid" />
 
-                        <!-- Temperature display -->
-                        <p id="temperature" class="temperature">
-                            16<span>°C</span>
-                        </p>
+                            <!-- Weather description (e.g., Sunny, Rainy) -->
+                            <p class="description">Sunny</p>
 
-                        <!-- City name display -->
-                        <p id="city" class="city">New York</p>
+                            <!-- Temperature display -->
+                            <p class="temperature">
+                                16<span>°C</span>
+                            </p>
+
+                            <!-- City name display -->
+                            <p class="city">New York</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Additional weather details (e.g., humidity) -->
-        <div class="weather-details">
-            <!-- Humidity icon and value -->
-            <div class="humidity">
-                <img src="assets/images/humidity.png" alt="Humidity Icon" class="img-fluid" >
-                <div class="text">
-                    <div id="info-humidity" class="info-humidity">
-                     
-                        <span>60%</span>
-                        <p class="humidity-text">Humidity</p>
-                    </div>
-                </div>              
-            </div>
-              <!-- Wind icon and value -->
-                <div class="wind">
-                    <img src="assets/images/wind.png" alt="Wind Icon" class="img-fluid" >
+            <!-- Additional weather details (e.g., humidity) -->
+            <div class="weather-details">
+                <!-- Humidity icon and value -->
+                <div class="humidity">
+                    <img src="assets/images/humidity.png" alt="Humidity Icon" class="img-fluid">
                     <div class="text">
-                        <div id="info-wind" class="info-wind">
-                        
+                        <div class="info-humidity">
+                            <span>60%</span>
+                            <p class="humidity-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wind icon and value -->
+                <div class="wind">
+                    <img src="assets/images/wind.png" alt="Wind Icon" class="img-fluid">
+                    <div class="text">
+                        <div class="info-wind">
                             <span>10 km/h</span>
                             <p class="wind-text">Wind Speed</p>
                         </div>
                     </div>
                 </div>
-
-
+            </div>
         </div>
 
-    </div>
-    </div>
 
 
+        <!-- Main container to-do list -->
+        <div class="container">
+            <!-- To-do app card -->
+            <div class="todo-app">
 
+                <!-- Title with icon -->
+                <h1 class="fw-bold">
+                    To-Do List
+                    <img src="assets/images/iconToDoList.png" alt="To-Do List Icon" class="img-fluid" />
+                </h1>
 
+                <!-- Input and button row -->
+                <div class="row">
 
+                    <!-- Task input field -->
+                    <input type="text" id="inputbox-todo" placeholder="Add a new task...">
 
+                    <!-- Add task button -->
+                    <button id="add-btn" onclick="addTodo()">Add</button>
 
-    <!-- Main container -->
-    <div class="container">
-        <!-- To-do app card -->
-        <div class="todo-app">
-
-            <!-- Title with icon -->
-            <h1 class="fw-bold">
-                To-Do List
-                <img src="assets/images/iconToDoList.png" alt="To-Do List Icon" class="img-fluid" />
-            </h1>
-
-            <!-- Input and button row -->
-            <div class="row">
-
-                <!-- Task input field -->
-                <input type="text" id="inputbox-todo" placeholder="Add a new task...">
-
-                <!-- Add task button -->
-                <button id="add-btn" onclick="addTodo()">Add</button>
-
-            </div>
-            <!-- Task list container -->
-            <ul id="list-container">
-                <!--<li class="checked">Task 1</li>
+                </div>
+                <!-- Task list container -->
+                <ul id="list-container">
+                    <!--<li class="checked">Task 1</li>
                 <li>Task 2</li>
                 <li>Task 3</li>-->
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <!-- Custom JavaScript -->
-    <script src="assets/js/script.js"></script>
+        <!-- Custom JavaScript -->
+        <script src="assets/js/script.js"></script>
 
-    <!-- Bootstrap JS bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/68e551a4bc.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap JS bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/68e551a4bc.js" crossorigin="anonymous"></script>
 </body>
 
 
