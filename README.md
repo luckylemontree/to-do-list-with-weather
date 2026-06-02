@@ -1,49 +1,46 @@
 ﻿# To-Do List with Weather API
-![responsive](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
-A responsive static web app that combines a local to-do list with live weather search functionality.
 
-This project is built for browser-based use and demonstrates client-side storage, interactive task management, and external API integration.
+A responsive, browser-based web app that combines a local task manager with live weather lookup.
 
-## Overview
-
-The app allows users to:
-- add and delete tasks
-- mark tasks as completed
-- save tasks in the browser using `localStorage`
-- search weather by city using the OpenWeatherMap API
-- view current temperature, weather description, humidity, and wind speed
-
-## Pages
-
-- `index.html` — main application page with the to-do list and weather search interface
+This project demonstrates how to build a static frontend application using HTML, CSS, JavaScript, Bootstrap, and external API integration.
 
 ## Features
 
-- task creation, completion toggle, and deletion
-- persistent task storage across refreshes
-- live weather lookup by city name
-- responsive layout with Bootstrap and custom CSS
-- simple, user-friendly interface
+- Add, complete, and delete to-do items.
+- Persist tasks in the browser using `localStorage` so they remain after refresh.
+- Search live weather by city name using OpenWeatherMap.
+- Display weather details including temperature, conditions, humidity, and wind speed.
+- Responsive layout suitable for desktop and mobile devices.
+- Simple and accessible UI with clear feedback and user interaction.
 
 ## Project Structure
 
-- `index.html` — app markup
-- `assets/css/style.css` — custom styling
-- `assets/js/script.js` — application logic for to-do list and weather data
-- `assets/images/` — icon and image assets used in the UI
+- `index.html` — main application page with the to-do list and weather search interface.
+- `assets/css/style.css` — custom styling for layout and responsiveness.
+- `assets/js/script.js` — application logic for task management and weather API requests.
+- `assets/images/` — icon and image assets used in the interface.
+- `responsive.png`, `validation css.png`, `validation index html.png`, `validation lighthouse.png` — image files included for project validation and preview.
 
-## How to Use
+## How It Works
 
-1. Open `index.html` in your browser.
-2. Add a task in the input field and click `Add`.
-3. Click on a task to mark it as completed.
-4. Click the `×` icon next to a task to delete it.
+- Tasks are created when the user types a description and clicks `Add`.
+- Clicking a task toggles its completed state by applying a `checked` style.
+- Clicking the delete icon removes the task from the list.
+- All tasks are saved to `localStorage` automatically so they persist across page reloads.
+- The weather search sends a request to the OpenWeatherMap API and displays data in the weather panel.
+
+## Usage
+
+1. Open `index.html` in a browser.
+2. Add a new task using the task input field and `Add` button.
+3. Click an existing task to mark it complete or incomplete.
+4. Remove a task by clicking the `×` icon next to it.
 5. Enter a city name in the weather search field and click the search button.
-6. View the weather details displayed in the panel.
+6. View updated weather details in the panel.
 
 ## Local Development
 
-To serve the app locally with a simple web server:
+Serve the app using a simple static server from the project folder:
 
 ```powershell
 python -m http.server
@@ -53,19 +50,31 @@ Then open `http://localhost:8000` in your browser.
 
 ## API Configuration
 
-The weather feature uses OpenWeatherMap.
+The weather search feature uses the OpenWeatherMap API.
 
-- The API key is stored in `assets/js/script.js`.
-- Replace the existing key with your own OpenWeatherMap key if needed.
+- The API key is currently stored in `assets/js/script.js`.
+- Replace the API key string with your own OpenWeatherMap key to avoid rate limits or expiration issues.
 
 ## Notes
 
-- Task data is stored locally in the browser only.
-- No backend server is required.
-- The project is designed as a static frontend app.
+- This is a static frontend project with no backend.
+- Task data is stored locally in the browser and is not synced to a server.
+- The app is ideal for learning DOM manipulation, browser storage, and API fetch operations.
+
+## Technologies
+
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+- OpenWeatherMap API
 
 ## Credits
 
-- Built with HTML, CSS, JavaScript, and Bootstrap
-- Weather data powered by OpenWeatherMap
-- Icons and UI assets included in `assets/images`
+- Built as a combined to-do list and weather lookup app.
+- Weather data powered by OpenWeatherMap.
+- UI icons and layout enhanced with Bootstrap.
+
+## License
+
+This project is open for personal learning and demonstration use.
