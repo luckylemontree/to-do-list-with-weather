@@ -12,7 +12,7 @@ body {
     background: url('../images/background.webp') no-repeat center center fixed;
     background-size: cover;
     background-position: center;
-   
+
 
 }
 
@@ -23,12 +23,62 @@ h3 {
     font-family: 'Alegreya', serif;
 }
 
+/*=======================================
+            header
+==========================================*/
+/* Header styling with icon alignment */
+header h1 {
+    display: flex;
+    justify-content: center;
+    /* centers horizontally */
+    align-items: center;
+    /* aligns text and image */
+    gap: 10px;
+    /* space between text and image */
+    text-align: center;
+    color:white;
+    margin-top:60px;
+}
 
+/* Icon size */
+header h1 img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/*----------------------time and weather--------------*/
+.time-weather{
+       background: rgba(255, 255, 255, 0.1);
+    /* Gradient background */
+    backdrop-filter: blur(30px);
+    /* Blur effect for frosted glass look */
+   
+    border-radius: 16px;
+    /* Rounded corners */
+
+    margin-top: 100px;
+
+}
+/*++++++++++++++++++++++++++++++++++++++++++++++++++ Time styling */
+.time-session {
+    color:white;
+    font-size:30px;
+      background: rgba(255, 255, 255, 0.1);
+    /* Gradient background */
+    backdrop-filter: blur(30px);
+  
+    border-radius: 16px;
+    /* Rounded corners */
+
+    margin-top:80px;
+    text-align:center;
+}
 /*++++++++++++++++++++++++++++++++++++++++++++++++++ Weather API styling */
 /* Main container for the weather app */
 .weather-container {
     width: 100%;
-    max-width: 470px;
+    max-width: 300px;
     /* Fixed width */
     height: 100px;
     color: white;
@@ -37,14 +87,13 @@ h3 {
     /* Gradient background */
     backdrop-filter: blur(30px);
     /* Blur effect for frosted glass look */
-    /* border: 2px solid rgba(255, 255, 255, 0.2);
-    Subtle border */
+  
     border-radius: 16px;
     /* Rounded corners */
-    
-    margin: auto;
-    /* Center horizontally */
-    margin-top:60px;
+
+  
+    max-width: 300px;
+    margin: 50px auto 0;
     padding-top: 5px;
     position: relative;
     /* Allows absolute positioning inside */
@@ -63,14 +112,14 @@ h3 {
     width: 100%;
     height: 45px;
     margin-left: 10px;
-     /* Space on the left for input padding */
+    /* Space on the left for input padding */
 }
 
 /* Style for the input field */
 .search-box input {
     position: absolute;
     /* Positioned inside search-box */
-    width: 85%;
+    width: 90%;
     /* Full width */
     height: 80%;
     /* Slightly smaller height */
@@ -135,7 +184,7 @@ h3 {
     /* Adjust internal spacing */
     cursor: pointer;
     /* Show pointer on hover */
-   
+
 }
 
 /* =====================================Container for displaying weather info */
@@ -266,41 +315,22 @@ h3 {
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++ To-do app card styling */
 /* Main container setup */
-container {
-    width: 800px;
-}
 
 .todo-app {
-   width: 100%;  
-   max-width: 850px; 
-   min-height: 400px;
+    width: 100%;
+    max-width: 850px;
+    min-height: 400px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 40px ;
+    padding: 40px;
     margin: auto;
     color: black;
-    margin-top:50px; 
-   
+    margin-top: 50px;
+
 }
 
-/* Header styling with icon alignment */
-.todo-app h1 {
-    display: flex;
-    justify-content: center;
-    /* centers horizontally */
-    align-items: center;
-    /* aligns text and image */
-    gap: 10px;
-    /* space between text and image */
-    text-align: center;
-}
 
-/* Icon size */
-.todo-app h1 img {
-    width: 30px;
-    height: 30px;
-}
 
 /* Input + button container (same row using flexbox) */
 .todo-app .row {
@@ -349,23 +379,35 @@ container {
 
 /* Style for each to-do list item */
 ul li {
+     display: flex;
+    /* Places text, stars, and delete button in one row */
+
+    align-items: flex-start;
+    /* Align items to the top instead of vertical center
+       so long multi-line text looks cleaner */
+
     list-style: none;
     /* removes default bullet points */
-    padding: 10px;
+   
     font-size: 22px;
-
-    /* custom padding (top right bottom left) 
-       extra left space for the icon and right space for delete button */
-    padding: 12px 60px 12px 50px;
-
-    /*user-select: none; /* prevents text from being selected */
+        padding: 12px 12px 12px 50px;
+    /* Padding order: top right bottom left
+       Extra left space leaves room for checkbox icon */
+      
     cursor: pointer;
     /* shows pointer when hovering */
+    
     position: relative;
-    /* allows positioning of ::before element */
+    /* Needed for positioning the ::before checkbox icon */
+
     text-transform: capitalize;
-     /* Capitalize first letter of each task */
-   
+    /* Capitalize first letter of each task */
+
+    word-break: break-word;
+     /* Prevents very long words/text from overflowing */
+
+    gap: 10px;
+     /* Adds spacing between task text, stars, and delete button */
 }
 
 /* Add custom icon before each list item */
@@ -383,20 +425,19 @@ ul li::before {
 
     /* unchecked icon */
     background-image: url(../images/uncheckedToDoList.png);
+    background-color: rgb(192, 191, 191);
     background-size: cover;
     background-position: center;
 
     /* position icon to the left of text */
     left: 8px;
-    top:18px;
+    top: 18px;
 }
 
 /* Style when a task is marked as completed */
-ul li.checked {
+ul li.checked .task-text {
     text-decoration: line-through;
-    /* strike-through text */
     color: #888;
-    /* grey color for completed task */
 }
 
 /* Change icon when task is checked */
@@ -406,16 +447,20 @@ ul li.checked::before {
 
 /* Style for the gray stars after each task */
 ul li .task-stars {
-    display: inline-block;    
-    
+    display: inline-block;   
     vertical-align: middle;
- position: absolute;
-    right: 60px;
-    top: 50%;
-    transform: translateY(-50%);
 
-    font-size: 18px;
-    
+    font-size: 22px;
+
+    margin-left: auto;
+
+    display: flex;
+    gap: 2px;
+
+    flex-shrink: 0;
+
+
+
 }
 
 ul li .task-stars span {
@@ -430,14 +475,12 @@ ul li .task-stars span.active-star {
 /* Style for the delete button inside each list item */
 
 ul li .delete-btn {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+
+ flex-shrink: 0;
 
     width: 36px;
     height: 36px;
-
+  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -447,6 +490,8 @@ ul li .delete-btn {
     font-size: 24px;
     cursor: pointer;
     z-index: 2;
+
+  
 }
 
 /* Hover effect for the delete button */
@@ -457,3 +502,45 @@ ul li .delete-btn:hover {
     /* changes icon color to red on hover */
 }
 
+/*===========================================================
+              For different screen size
+=============================================================*/
+/* Apply these styles only when screen width is 370px or smaller */
+@media (max-width: 370px) {
+
+    /* Adjust spacing inside each task item */
+    ul li {
+
+        /* Reduce right padding because screen is smaller */
+        padding-right: 20px;
+
+        /* Add extra bottom space for stars to move below text */
+        padding-bottom: 45px;
+    }
+
+    /* Move stars below the task text on small screens */
+    ul li .task-stars {
+
+        /* Reset absolute positioning */
+        position: static;
+
+        /* Make stars take a full new line */
+        display: block;
+
+        /* Add space above stars */
+        margin-top: 10px;
+
+        /* Remove left spacing */
+        margin-left: 0;
+
+        /* Remove previous vertical centering transform */
+        transform: none;
+    }
+
+    /* Adjust delete button position for mobile layout */
+    ul li .delete-btn {
+
+        /* Move delete button slightly upward */
+        top: 18px;
+    }
+}

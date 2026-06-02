@@ -80,7 +80,12 @@ function addTodo() {
         let li = document.createElement('li');
 
         // Set the text of the li to the input value
-        li.innerText = todoInput.value;
+        let taskText = document.createElement('span');
+        taskText.className = 'task-text';
+        taskText.innerText = todoInput.value;
+
+        // Add the text to the li
+        li.appendChild(taskText);
 
         // Add the list item to the container
         listContainer.appendChild(li);
@@ -110,8 +115,6 @@ function addTodo() {
     // Clear the input field after adding task
     todoInput.value = '';
 
-    //stars change
-    starsChange();
     // Save updated list to localStorage
     saveData();
 }
@@ -119,6 +122,7 @@ function addTodo() {
 // Add click event listener to the list container 
 
 listContainer.addEventListener('click', function (e) {
+    //------------------stars ---------------------
     // If one star is clicked
     if (e.target.parentElement.classList.contains('task-stars')) {
         const starsBox = e.target.parentElement;
@@ -137,14 +141,14 @@ listContainer.addEventListener('click', function (e) {
         saveData();
         return;
     }
-
+    //---------------------------delete button------------------------
     // Delete button
     if (e.target.classList.contains('delete-btn')) {
         e.target.parentElement.remove();
         saveData();
         return;
     }
-
+    //------------------------------------- checked button-----------------
     // Find nearest li
     const li = e.target.closest('li');
 
