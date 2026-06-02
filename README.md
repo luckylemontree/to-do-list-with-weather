@@ -101,9 +101,9 @@ This project includes validation checks to ensure code quality and compatibility
 
 Validation screenshots are included in the repository:
 - `responsive.png`![responsive.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
-- `validation css.png`
-- `validation index html.png`
-- `validation lighthouse.png`
+- `validation css.png`![validation css.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20css.png)
+- `validation index html.png`![validation index html.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20index%20html.png)
+- `validation lighthouse.png`![validation index html.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20lighthouse.png)
 
 ## Credits
 
