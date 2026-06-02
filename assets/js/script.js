@@ -24,9 +24,22 @@ async function checkWeather() {
         }
         const data = await response.json();
 
-      
-        displayWeather(data);
+        document.querySelector('.weather-container').style.height = "555px";
+        const weatherInfo = document.querySelector('.weather-info');
+        weatherInfo.style.display = "block";
+        weatherInfo.style.animation = "fadeIn 0.5s ease-in-out";
 
+        displayWeather(data);
+        document.querySelector('.search-box input').value = "";
+        
+        let closeIcon = document.querySelector('.weather-info i');
+        closeIcon.addEventListener('click', function () {
+            weatherInfo.style.animation = "fadeOut 0.5s ease-in-out";
+            setTimeout(() => {
+                weatherInfo.style.display = "none";
+                weatherContainer.style.height = "100px";
+            }, 500);
+        });
     } catch (error) {
         console.error('Error fetching weather data:', error);
     }
