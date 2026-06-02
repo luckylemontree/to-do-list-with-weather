@@ -1,7 +1,7 @@
 ﻿# To-Do List with Weather API
 
 A responsive, browser-based web app that combines a local task manager with live weather lookup.
-
+![alt text](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
 This project demonstrates how to build a static frontend application using HTML, CSS, JavaScript, Bootstrap, and external API integration.
 
 ## Features
@@ -68,6 +68,21 @@ The weather search feature uses the OpenWeatherMap API.
 - JavaScript
 - Bootstrap 5
 - OpenWeatherMap API
+
+## Validation
+
+This project includes validation checks to ensure code quality and compatibility:
+
+- HTML validation for `index.html`
+- CSS validation for `assets/css/style.css`
+- Responsive design checks for desktop and mobile layouts
+- Lighthouse validation for basic accessibility and performance
+
+Validation screenshots are included in the repository:
+- `responsive.png`
+- `validation css.png`
+- `validation index html.png`
+- `validation lighthouse.png`
 
 ## Credits
 
