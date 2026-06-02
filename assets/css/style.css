@@ -364,6 +364,8 @@ ul li {
     /* shows pointer when hovering */
     position: relative;
     /* allows positioning of ::before element */
+    text-transform: capitalize;
+     /* Capitalize first letter of each task */
    
 }
 
