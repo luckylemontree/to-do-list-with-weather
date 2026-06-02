@@ -95,13 +95,12 @@ The design uses a modern, dark theme with strong contrast for readability:
 This project includes validation checks to ensure code quality and compatibility:
 
 - HTML validation for `index.html`
-
 - CSS validation for `assets/css/style.css`
 - Responsive design checks for desktop and mobile layouts
 - Lighthouse validation for basic accessibility and performance
 
 Validation screenshots are included in the repository:
-- `responsive.png`
+- `responsive.png`![responsive.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
 - `validation css.png`
 - `validation index html.png`
 - `validation lighthouse.png`
