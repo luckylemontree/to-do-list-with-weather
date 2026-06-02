@@ -89,6 +89,7 @@ The design uses a modern, dark theme with strong contrast for readability:
 - `#c4ccdf` — main text and highlight color
 - `#88c0d0` — interactive accents and buttons
 - `#276271` — stronger accent for active elements
+![color]()
 
 ## Validation
 
