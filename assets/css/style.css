@@ -151,7 +151,7 @@ body {
     /* Center vertically */
     gap: 10px;
     /* Space between items */
-    width: 80%;
+    width: 90%;
     height: 45px;
     margin-left: 10px;
     /* Space on the left for input padding */
@@ -163,7 +163,7 @@ body {
 .search-box input {
     position: absolute;
     /* Positioned inside search-box */
-    width: 100%;
+    width: 95%;
     /* Full width */
     height: 80%;
     /* Slightly smaller height */
@@ -201,7 +201,7 @@ body {
 
 /* Style for placeholder text inside input */
 .search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     /* Lighter color for placeholder */
     font-size: 14px;
     font-weight: 500;
@@ -212,11 +212,12 @@ body {
 
 /* Search button (magnifying glass icon) */
 .search-box button {
-    color: white;
+    color: rgb(248, 244, 244);
     /* Icon color */
     position: absolute;
-    right: 0;
+    right: -10px;
     /* Align to the right of input */
+   
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -225,7 +226,7 @@ body {
     background-color: transparent;
     /* No background */
     font-size: 14px;
-    padding: 0 50px 0 5px;
+    margin-left:5px;
     /* Adjust internal spacing */
     cursor: pointer;
     /* Show pointer on hover */
@@ -243,9 +244,9 @@ body {
 
 .weather-info i {
     position: absolute;
-    top: 10px;
+    top: 50px;
     right: 20px;
-    font-size: 18px;
+    font-size: 10px;
 }
 
 .weather-box {
@@ -368,7 +369,7 @@ header h1 {
     gap: 10px;
     /* space between text and image */
     text-align: center;
-    color: white;
+    color: rgb(246, 244, 242);
     margin-top: 60px;
 }
 

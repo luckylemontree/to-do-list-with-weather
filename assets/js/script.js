@@ -1,5 +1,5 @@
 // ++++++++++++++++++++++++++++++++Script for To-do List App with Weather API and time+++
-
+const apiKey = 'f56768d8967f3a3fddcf238efff96c78';//APIkey
 const changeBtn = document.getElementById('changeBackground');
 
 // List of background images to cycle through
@@ -9,6 +9,9 @@ const backgrounds = [
     "assets/images/rose.webp",
     "assets/images/bluelight.webp",
     "assets/images/skystars.webp",
+    "assets/images/green.webp",
+    "assets/images/littleorangeflower.webp",
+    "assets/images/purpleflower.webp"
 ];
 
 let currentBg = 0;
@@ -77,7 +80,7 @@ let weatherDetails = document.querySelector('.weather-details');
 async function checkWeather() {
     // Get the city name from the search input field
     let city = document.querySelector(".search-box input").value;
-    const apiKey = 'f56768d8967f3a3fddcf238efff96c78';
+   
     // Build the API URL using the city name, API key, and metric units (°C)
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -99,7 +102,7 @@ async function checkWeather() {
         const data = await response.json();
 
         // Expand the weather container height to show all weather info
-        document.querySelector('.weather-container').style.height = "440px";
+        document.querySelector('.weather-container').style.height = "450px";
         let weatherInfo = document.querySelector('.weather-info');
 
         // Show the weather info section with a fade-in animation
@@ -112,9 +115,16 @@ async function checkWeather() {
         // Clear the search input after a successful fetch
         document.querySelector(".search-box input").value = "";
 
-        // Add click listener to the close (×) icon to hide weather info
+       
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
+
+ // Add click listener to the close (×) icon to hide weather infoa
         let closeIcon = document.querySelector('.weather-info i');
         closeIcon.addEventListener('click', function () {
+              let weatherInfo = document.querySelector('.weather-info');
             // Trigger fade-out animation before hiding
             weatherInfo.style.animation = "fadeOut 0.5s ease-in-out";
             setTimeout(() => {
@@ -123,11 +133,6 @@ async function checkWeather() {
                 weatherContainer.style.height = "100px";
             }, 500);
         });
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-    }
-}
-
 
 // Function to update the weather UI with data returned from the API
 function displayWeather(data) {
@@ -163,7 +168,7 @@ async function autoDetectCity() {
             const { latitude, longitude } = position.coords;
 
             try {
-                const apiKey = 'f56768d8967f3a3fddcf238efff96c78';
+                
                 // Build the API URL using coordinates instead of city name
                 // This avoids needing a separate reverse-geocoding step
                 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
@@ -184,7 +189,7 @@ async function autoDetectCity() {
                     checkWeather();
 
                     // Expand the container and show the weather info panel
-                    document.querySelector('.weather-container').style.height = "555px";
+                    document.querySelector('.weather-container').style.height = "450px";
                     const weatherInfo = document.querySelector('.weather-info');
                     weatherInfo.style.display = "block";
                     weatherInfo.style.animation = "fadeIn 0.5s ease-in-out";
