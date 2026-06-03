@@ -1,6 +1,7 @@
-/*-- Google Fonts: Alegreya for headings,Nunito for body text 
+/*-- Google Fonts: Alegreya for headings,Nunito for body text */
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap');
 
 
 /* Reset default spacing and apply box sizing */
@@ -21,12 +22,6 @@ body {
 
 }
 
-/* Apply Alegreya font to headings */
-h1,
-h2,
-h3 {
-    font-family: 'Alegreya', serif;
-}
 
 /*=======================================
             header
@@ -120,6 +115,8 @@ header h1 img {
     /* Gradient background */
     backdrop-filter: blur(30px);
     /* Blur effect for frosted glass look */
+    -webkit-backdrop-filter: blur(30px);
+    /**/
 
     border-radius: 16px;
     /* Rounded corners */
@@ -289,9 +286,7 @@ header h1 img {
 /*================================= Container for additional weather details (humidity, wind speed) */
 .weather-details {
     position: static;
-    bottom: 20px;
-    /* Space from bottom */
-    left: 0;
+      left: 0;
     width: 100%;
     padding: 0 20px;
     /* Padding on sides */
@@ -321,8 +316,7 @@ header h1 img {
 /* Icons for humidity and wind speed */
 .weather-details .humidity img,
 .weather-details .wind img {
-    width: 30px;
-    ;
+    width: 30px;    
     /* Size of the icons */
     margin-right: 10px;
     /* Slight spacing from text */
@@ -348,6 +342,9 @@ header h1 img {
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++ To-do app card styling */
 /* Main container setup */
+.to-do-title h1{
+     font-family: 'Alegreya', serif;
+} 
 
 .todo-app {
     width: 100%;
@@ -366,7 +363,7 @@ header h1 img {
 
 
 /* Input + button container (same row using flexbox) */
-.todo-app .type-toDo {
+.todo-app .todo-input-container {
     display: flex;
     /* put elements in one line */
     align-items: center;
@@ -469,7 +466,7 @@ ul li::before {
 
     /* unchecked icon */
     background-image: url(../images/uncheckedToDoList.png);
-    background-color: rgb(192, 191, 191);
+    background-color: rgb(226, 255, 3);
     background-size: cover;
     background-position: center;
 
@@ -506,7 +503,6 @@ ul li .task-stars {
 
     margin-left: auto;
 
-    display: flex;
     gap: 2px;
 
     flex-shrink: 0;
