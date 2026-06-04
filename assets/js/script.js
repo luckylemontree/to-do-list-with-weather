@@ -49,7 +49,7 @@ setInterval(() => {
     year.innerText = currentDate.getFullYear();
 }, 1000);
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++Script for time+++++++++++++++++++++++++
+//++++++++++++++++++++++++++Script for time+++++++++++++++++++++++++
 
 // Get the HTML elements that display hours, minutes, and seconds
 let hrs = document.getElementById("hrs");
@@ -68,7 +68,7 @@ setInterval(() => {
 }, 1000);
 
 
-// ++++++++++++++++++++++++++++++++++++++   Script for  Weather API  +++
+// ++++++++++++++++++++++   Script for  Weather API  +++
 
 // Get references to weather-related DOM elements used across multiple functions
 let weatherContainer = document.querySelector('.weather-container');
@@ -80,7 +80,7 @@ let weatherDetails = document.querySelector('.weather-details');
 async function checkWeather() {
     // Get the city name from the search input field
     let city = document.querySelector(".search-box input").value;
-   
+
     // Build the API URL using the city name, API key, and metric units (°C)
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -102,7 +102,7 @@ async function checkWeather() {
         const data = await response.json();
 
         // Expand the weather container height to show all weather info
-        document.querySelector('.weather-container').style.height = "450px";
+
         let weatherInfo = document.querySelector('.weather-info');
 
         // Show the weather info section with a fade-in animation
@@ -115,24 +115,28 @@ async function checkWeather() {
         // Clear the search input after a successful fetch
         document.querySelector(".search-box input").value = "";
 
-       
+
     } catch (error) {
         console.error('Error fetching weather data:', error);
     }
 }
 
- // Add click listener to the close (×) icon to hide weather infoa
-        let closeIcon = document.querySelector('.weather-info i');
-        closeIcon.addEventListener('click', function () {
-              let weatherInfo = document.querySelector('.weather-info');
-            // Trigger fade-out animation before hiding
-            weatherInfo.style.animation = "fadeOut 0.5s ease-in-out";
-            setTimeout(() => {
-                // Hide the weather info and shrink the container after animation
-                weatherInfo.style.display = "none";
-                weatherContainer.style.height = "100px";
-            }, 500);
-        });
+// Allow user to search for weather by pressing Enter instead of clicking the search button
+document.getElementById('city-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkWeather(); });
+
+
+// Add click listener to the close (×) icon to hide weather infoa
+let closeIcon = document.querySelector('.weather-info i');
+closeIcon.addEventListener('click', function () {
+    let weatherInfo = document.querySelector('.weather-info');
+    // Trigger fade-out animation before hiding
+    weatherInfo.style.animation = "fadeOut 0.5s ease-in-out";
+    setTimeout(() => {
+        // Hide the weather info and shrink the container after animation
+        weatherInfo.style.display = "none";
+        weatherContainer.style.height = "100px";
+    }, 500);
+});
 
 // Function to update the weather UI with data returned from the API
 function displayWeather(data) {
@@ -168,7 +172,7 @@ async function autoDetectCity() {
             const { latitude, longitude } = position.coords;
 
             try {
-                
+
                 // Build the API URL using coordinates instead of city name
                 // This avoids needing a separate reverse-geocoding step
                 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
@@ -187,12 +191,6 @@ async function autoDetectCity() {
 
                     // Run checkWeather() to fetch and display full weather info
                     checkWeather();
-
-                    // Expand the container and show the weather info panel
-                    document.querySelector('.weather-container').style.height = "450px";
-                    const weatherInfo = document.querySelector('.weather-info');
-                    weatherInfo.style.display = "block";
-                    weatherInfo.style.animation = "fadeIn 0.5s ease-in-out";
                 }
 
             } catch (error) {
@@ -250,40 +248,61 @@ function addTodo() {
         alert('Please enter a task!');
         return;
     }
-    else {
-        // Create a new list item <li> to hold the task
-        let li = document.createElement('li');
 
-        // Create a <span> to hold the task text
-        let taskText = document.createElement('span');
-        taskText.className = 'task-text';
-        taskText.innerText = todoInput.value;
+    // Create a new list item <li> to hold the task
+    let li = document.createElement('li');
+    // Create a dedicated, tappable checkbox button for marking task complete
 
-        // Add the task text span into the list item
-        li.appendChild(taskText);
 
-        // Add the list item to the visible task list
-        listContainer.appendChild(li);
+    // Create a <span> to hold the task text
+    let taskText = document.createElement('span');
+    taskText.className = 'task-text';
+    taskText.innerText = todoInput.value;
 
-        // Create a star rating widget (5 stars) for the task
-        let starsSpan = document.createElement('span');
-        starsSpan.className = 'task-stars';
-        // Each star has a data-value attribute used to determine the rating
-        starsSpan.innerHTML = `
+    // Add the task text span into the list item
+    li.appendChild(taskText);
+
+
+    // Create a star rating widget (5 stars) for the task
+    let starsSpan = document.createElement('span');
+    starsSpan.className = 'task-stars';
+    // Each star has a data-value attribute used to determine the rating
+    starsSpan.innerHTML = `
            <span data-value="1">★</span>
            <span data-value="2">★</span>
            <span data-value="3">★</span>
            <span data-value="4">★</span>
            <span data-value="5">★</span>
          `;
-        li.appendChild(starsSpan);
+    li.appendChild(starsSpan);
 
-        // Create the delete (×) button for removing the task
-        let deleteSpan = document.createElement('span');
-        deleteSpan.className = 'delete-btn';
-        deleteSpan.textContent = '\u00d7'; // × character
-        li.appendChild(deleteSpan);
-    }
+    // Create the delete (×) button for removing the task
+    let deleteSpan = document.createElement('span');
+    deleteSpan.className = 'delete-btn';
+    deleteSpan.textContent = '\u00d7'; // × character
+    li.appendChild(deleteSpan);
+
+
+    /* Create well done image — hidden by default---This for insert img --keep for infuture*/
+    /*let wellDoneImg = document.createElement('img');
+    wellDoneImg.src = 'assets/images/wellDone.gif'; 
+    wellDoneImg.className = 'wellDone-img';
+    li.appendChild(wellDoneImg);*/
+
+    // Create well done badge — hidden by default
+    let wellDoneImg = document.createElement('div');
+    wellDoneImg.className = 'wellDone-img';
+    wellDoneImg.textContent = 'You finish the task! 👏👏👏Well Done!🎉';
+
+    // Make it sit on its own row below the task
+    wellDoneImg.style.flexBasis = '100%';  // ← takes full width, forces new line
+    wellDoneImg.style.textAlign = 'center';
+
+    li.appendChild(wellDoneImg);
+
+    // Add the list item to the visible task list
+    listContainer.appendChild(li);
+
 
     // Clear the input field after the task is added
     todoInput.value = '';
@@ -291,6 +310,9 @@ function addTodo() {
     // Save the updated list to localStorage so it persists after refresh
     saveData();
 }
+
+// Allow user to add a task by pressing Enter instead of clicking the Add button
+todoInput.addEventListener('keydown', e => { if (e.key === 'Enter') addTodo(); });
 
 
 // Single click listener on the list container handles all interactions:
@@ -328,25 +350,65 @@ listContainer.addEventListener('click', function (e) {
         return;
     }
 
+
     //------------------------------------- checked button-----------------
     // Find the nearest <li> ancestor of the clicked element
     const li = e.target.closest('li');
-
     if (!li) return;
 
-    // Get the bounding box of the list item
+    //Get the bounding box of the list item
     const rect = li.getBoundingClientRect();
 
-    // Calculate how far from the left edge of the <li> the click happened
+    //Calculate how far from the left edge of the <li> the click happened
     const clickX = e.clientX - rect.left;
 
     // Only toggle 'checked' if the click was within the leftmost 40px (checkbox icon area)
     if (clickX <= 40) {
         li.classList.toggle('checked');
+
+
+        // -------------------- Show "well done" after finish the task
+        // Get the well done image inside this specific li
+        const wellDoneImg = li.querySelector('.wellDone-img');
+
+        // If task is now checked — show the image then hide it after 1.5 seconds
+        if (li.classList.contains('checked')) {
+            wellDoneImg.style.display = 'block';
+            wellDoneImg.style.animation = 'popIn 0.4s ease';
+
+            // Hide image after 1.5 seconds
+            setTimeout(() => {
+                wellDoneImg.style.display = 'none';
+            }, 1500);
+
+        } else {
+            // Task unchecked — hide image immediately
+            wellDoneImg.style.display = 'none';
+        }
+
+
+        //------------------sort the tasks: unclick tasks are on the top
+        sortTasks();
+
         saveData();
     }
 });
 
+// Sort tasks so unchecked stay on top, checked go to the bottom
+function sortTasks() {
+    // Get all current li items as an array
+    const tasks = Array.from(listContainer.querySelectorAll('li'));
+
+    // Separate into two groups
+    const unchecked = tasks.filter(li => !li.classList.contains('checked'));
+    const checked = tasks.filter(li => li.classList.contains('checked'));
+
+    // Put unchecked first, then checked at the bottom
+    [...unchecked, ...checked].forEach(li => listContainer.appendChild(li));
+
+    // Save the new order to localStorage
+    saveData();
+}
 
 // Function to save the current list HTML to localStorage
 function saveData() {
@@ -367,5 +429,5 @@ function showTask() {
 // Restore tasks from localStorage when the page first loads
 showTask();
 
-// Auto-detect the user's city once the page has fully loaded
+// When the page is ready, auto-detect the user's city and display local weather
 window.addEventListener("load", autoDetectCity);

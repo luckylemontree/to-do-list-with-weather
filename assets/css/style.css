@@ -123,7 +123,7 @@ body {
     /* just top spacing, no auto centering */
     /* keep the rest as is */
     margin-bottom: 20px;
-    height: fit-content;
+    height: 450px;
     color: white;
     /* Text color */
     background: rgba(255, 255, 255, 0.2);
@@ -235,7 +235,7 @@ body {
 
 /* =====================================Container for displaying weather info */
 .weather-info {
-
+    display: none;
     position: relative;
 
     /* Allows absolute positioning of details */
@@ -455,11 +455,11 @@ ul li {
 
     display: flex;
     /* Places text, stars, and delete button in one row */
-
+    flex-wrap: wrap; 
     align-items: flex-start;
     /* Align items to the top instead of vertical center
        so long multi-line text looks cleaner */
-
+  
     list-style: none;
     /* removes default bullet points */
 
@@ -511,6 +511,69 @@ ul li::before {
     top: 18px;
 }
 
+ /*Change icon when task is checked */
+ul li.checked::before {
+    background-image: url(../images/checkedToDoList.png);
+}
+
+/* Well done image — hidden by default ----for the img in future
+.wellDone-img {
+    display: none;
+    position: absolute;
+
+    /* center it over the task 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 120px;
+    z-index: 10;
+
+    /* smooth pop-in 
+    pointer-events: none;
+    /* so it doesn't block clicks 
+}
+
+/* Pop-in animation 
+@keyframes popIn {
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    70%  { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}*/
+
+/* Well done image — hidden by default */
+.wellDone-img {
+    display: none;
+
+    /* remove position absolute — let it flow naturally */
+    width: 80px;
+    height: auto;
+
+    /* sit below the task content */
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* center it */
+    display: none;
+    justify-content: center;
+
+    z-index: 1;
+    pointer-events: none;
+
+    /* smooth pop-in */
+    animation: popIn 0.8s ease;
+
+}
+
+    @keyframes popIn {
+    0%   { transform: scale(0);   opacity: 0; }
+    40%  { transform: scale(1.8); opacity: 1; } /* bigger */
+    
+    80%  { transform: scale(2.5); opacity: 1; } /* bigger */
+    100% { transform: scale(1.8);   opacity: 1; } /* normal */
+}
+
 ul li .task-text {
     flex: 1 1 auto;
     min-width: 0;
@@ -525,10 +588,7 @@ ul li.checked .task-text {
     color: #888;
 }
 
-/* Change icon when task is checked */
-ul li.checked::before {
-    background-image: url(../images/checkedToDoList.png);
-}
+
 
 /* Style for the gray stars after each task */
 ul li .task-stars {
@@ -544,17 +604,20 @@ ul li .task-stars {
     flex-shrink: 0;
 
 
-
 }
 
 ul li .task-stars span {
     color: #a79494;
     cursor: pointer;
+    display: inline-block;        
+   
 }
 
 ul li .task-stars span.active-star {
     color: rgb(255, 111, 0);
-    transform: scale(1.5);
+    transform: scale(1.1);
+     text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    /* gold glow effect */
 }
 
 /* Style for the delete button inside each list item */
