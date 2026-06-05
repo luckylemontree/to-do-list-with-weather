@@ -55,7 +55,7 @@ document.getElementById('textColor').addEventListener('input', function () {
 function toggleBrightness() { 
         brightnessSlider.style.display = brightnessSlider.style.display === 'block' ? 'none' : 'block'; }
 
-        
+
 brightnessSlider.addEventListener('input', function () {
     const alpha = (this.value / 100).toFixed(2);
      let bgOverlay = document.getElementById("bgOverlay");
