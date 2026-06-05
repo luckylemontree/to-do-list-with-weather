@@ -11,7 +11,7 @@ const toggleBtns = [
     document.getElementById('textBtn'),
     document.getElementById('brightnessBtn'),
 ];
-
+let brightnessSlider = document.getElementById('brightnessSlider')
 let menuOpen = false;
 
 clickBtn.addEventListener('click', function () {
@@ -50,12 +50,13 @@ document.getElementById('textColor').addEventListener('input', function () {
 
 // Brightness toggle
 function toggleBrightness() {
-    brightnessSlider.style.display =
+    brightnessSlider.style.display = document.getElementById("brightnessSlider");
         brightnessSlider.style.display === 'block' ? 'none' : 'block';
 }
 
 brightnessSlider.addEventListener('input', function () {
     const alpha = (this.value / 100).toFixed(2);
+     let bgOverlay = document.getElementById("bgOverlay");
     bgOverlay.style.background = `rgba(0, 0, 0, ${alpha})`;
 });
 

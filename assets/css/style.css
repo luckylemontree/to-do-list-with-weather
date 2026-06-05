@@ -42,6 +42,7 @@ body {
     align-items: center;
     cursor: pointer;
     z-index: 999;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: white;
@@ -135,10 +136,9 @@ main {
 .time-weather {
     background: rgba(255, 255, 255, 0.1);
     /* Gradient background */
-    backdrop-filter: blur(30px);
-    /* Blur effect for frosted glass look */
     -webkit-backdrop-filter: blur(30px);
     /* For Safari*/
+    backdrop-filter: blur(30px);
 
     border-radius: 16px;
     /* Rounded corners */
@@ -154,9 +154,9 @@ main {
     /* fill the time-weather column */
     background: rgba(255, 255, 255, 0.1);
 
-    backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     /* For Safari*/
+    backdrop-filter: blur(30px);
 
     border-radius: 10px;
     overflow: hidden;
@@ -202,10 +202,9 @@ main {
     /* Text color */
     background: rgba(255, 255, 255, 0.2);
     /* Gradient background */
-    backdrop-filter: blur(30px);
-    /* Blur effect for frosted glass look */
     -webkit-backdrop-filter: blur(30px);
     /* For Safari*/
+    backdrop-filter: blur(30px);
 
     border-radius: 16px;
     /* Rounded corners */
