@@ -21,22 +21,48 @@
 
 
 <body>
-    <div id="changeBackground">
-        <span class="btn-text">Click</span>
-    </div>
+    <!--- button for change the background image and color-->
+    <header>
+        <div id="click">
+            <span class="btn-click">click</span>
+        </div>
+        
+        <!----change background-->
+        <div id="changeBackground">
+            <span class="btn-text">🏞️</span>
+        </div>
+
+        <!--  accent colour picker -->
+        <div id="accentBtn" title="Accent colour">
+            <label for="accentColor">🎨</label>
+            <input type="color" id="accentColor" value="#f77512">
+        </div>
+
+        <!--  text colour picker -->
+        <div id="textBtn" title="Text colour">
+            <label for="textColor">T</label>
+            <input type="color" id="textColor" value="#f6f4f2">
+        </div>
+
+        <!-- overlay for brightness -->
+        <div id="bgOverlay"></div>
+        <div id="brightnessBtn" onclick="toggleBrightness()">☀</div>
+        <input type="range" id="brightnessSlider" min="0" max="80" value="0" step="1">
+    </header>
+
 
     <main>
         <div class="container">
 
             <div class="row">
-                     <!-- to-do list -->
+                <!-- to-do list -->
                 <div class="col-12 col-md-9 mt-5">
                     <header>
                         <!-- Title with icon -->
                         <h1 class="fw-bold text-center to-do-title">
-                            To-Do List                                                     
+                            To-Do List
                         </h1>
-                        
+
 
                     </header>
                     <!-- To-do app card -->
@@ -153,7 +179,7 @@
                     </div>
                 </div>
 
-           
+
             </div>
         </div>
     </main>

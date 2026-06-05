@@ -2,7 +2,63 @@
 const apiKey = 'f56768d8967f3a3fddcf238efff96c78';//APIkey
 const changeBtn = document.getElementById('changeBackground');
 
-// List of background images to cycle through
+//++++++++++++++++++top buttons++++++++++++++
+
+const clickBtn = document.getElementById('click');
+const toggleBtns = [
+    document.getElementById('changeBackground'),
+    document.getElementById('accentBtn'),
+    document.getElementById('textBtn'),
+    document.getElementById('brightnessBtn'),
+];
+
+let menuOpen = false;
+
+clickBtn.addEventListener('click', function () {
+    menuOpen = !menuOpen;
+    toggleBtns.forEach(btn => {
+        btn.style.display = menuOpen ? 'flex' : 'none';
+    });
+    if (!menuOpen) {
+        brightnessSlider.style.display = 'none';
+    }
+});
+
+// Accent colour picker
+document.getElementById('accentBtn').addEventListener('click', function () {
+    document.getElementById('accentColor').click();
+});
+
+document.getElementById('accentColor').addEventListener('input', function () {
+    document.documentElement.style.setProperty('--accent-color', this.value);
+    document.querySelectorAll('#add-btn').forEach(el => el.style.backgroundColor = this.value);
+    document.querySelectorAll('ul li').forEach(li => li.style.borderBottomColor = this.value);
+    document.querySelectorAll('ul li .task-stars span.active-star').forEach(s => s.style.color = this.value);
+});
+
+// Text colour picker
+document.getElementById('textBtn').addEventListener('click', function () {
+    document.getElementById('textColor').click();
+});
+
+document.getElementById('textColor').addEventListener('input', function () {
+    document.querySelectorAll('header h1, .date-session, .time-session, .weather-container, .weather-box, .weather-details').forEach(el => {
+        el.style.color = this.value;
+    });
+});
+
+// Brightness toggle
+function toggleBrightness() {
+    brightnessSlider.style.display =
+        brightnessSlider.style.display === 'block' ? 'none' : 'block';
+}
+
+brightnessSlider.addEventListener('input', function () {
+    const alpha = (this.value / 100).toFixed(2);
+    bgOverlay.style.background = `rgba(0, 0, 0, ${alpha})`;
+});
+
+//----------------change background image----
 const backgrounds = [
     "assets/images/background.webp",
     "assets/images/mountain.webp",
@@ -17,20 +73,13 @@ const backgrounds = [
 let currentBg = 0;
 
 changeBtn.addEventListener('click', function () {
-    // Cycle to the next background image
     currentBg = (currentBg + 1) % backgrounds.length;
     document.body.style.background = `url('${backgrounds[currentBg]}') no-repeat center center fixed`;
     document.body.style.backgroundSize = "cover";
-
-    // Remove the class first so animation can re-trigger on each click
     changeBtn.classList.remove('clicked');
-
-    // Small timeout forces browser to re-render before re-adding the class
-    void changeBtn.offsetWidth; //  triggers reflow
+    void changeBtn.offsetWidth;
     changeBtn.classList.add('clicked');
 });
-
-
 //+++++++++++++++++++++++++++Script for date+++++++++++++++++++++++++
 
 // Get the HTML elements that display day, month, and year
@@ -379,16 +428,20 @@ listContainer.addEventListener('click', function (e) {
             // Hide image after 1.5 seconds
             setTimeout(() => {
                 wellDoneImg.style.display = 'none';
-            }, 1500);
+                //------------------sort the tasks: unclick tasks are on the top
+                sortTasks();
+            }, 2000);
+
+           
+
 
         } else {
             // Task unchecked — hide image immediately
             wellDoneImg.style.display = 'none';
+             //------------------sort the tasks: unclick tasks are on the top
+            sortTasks();
         }
 
-
-        //------------------sort the tasks: unclick tasks are on the top
-        sortTasks();
 
         saveData();
     }
@@ -423,6 +476,12 @@ function showTask() {
     // If there is saved data, inject it back into the list container
     if (savedData) {
         listContainer.innerHTML = savedData;
+
+
+        // welldone is hidden
+        listContainer.querySelectorAll('.wellDone-img').forEach(img => {
+            img.style.display = 'none';
+        });
     }
 }
 

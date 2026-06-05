@@ -24,12 +24,13 @@ body {
 
 /*----------------------change background img--------------*/
 /* The button — fixed position so it stays visible when scrolling */
-#changeBackground {
+#click {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
-    position: fixed;        /* stays on screen */
+    position: fixed;
+    /* stays on screen */
     left: 20px;
     top: 20px;
     color: white;
@@ -38,22 +39,137 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 999;           /*  stays on top of everything */
+    z-index: 999;
+    /*  stays on top of everything */
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+#changeBackground,
+#accentBtn,
+#textBtn,
+#brightnessBtn,
+#brightnessSlider {
+    display: none;
+}
+
+/* change the background image*/
+#changeBackground {
+   width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    left: 80px;
+    top: 20px;
+    color: white;
+    font-weight: 600;
+    /* NO display: flex here */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* Applied by JavaScript when clicked */
 #changeBackground.clicked {
-    animation: moveAround 1s linear;   /* animation on the button itself */
+    animation: moveAround 1s linear;
+    /* animation on the button itself */
 }
 
-@keyframes moveAround {
-    0%   { background-color: rgb(249, 194, 194); left: 20px;  top: 20px;  }
-   25%  { background-color: rgb(248, 248, 179); left: 200px; top: 20px;  }
-    /*50%  { background-color: rgb(181, 181, 250); left: 200px; top: 200px; }*/
-    /*75% { background-color: rgb(188, 243, 188); left: 20px;  top: 200px; }*/
-   100% { background-color: rgb(247, 228, 228); left: 20px;  top: 20px;  }
+
+
+/*-------------colour  and text picker------------*/
+#accentBtn,
+#textBtn {
+     width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    top: 20px;
+    /* NO display: flex here */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+#accentBtn {
+    left: 140px;
+}
+
+#textBtn {
+    left: 200px;
+}
+
+/* hide the actual colour input, make the whole div clickable */
+#accentBtn input[type="color"],
+#textBtn input[type="color"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+/*-----------------for the change the background color-----*/
+#bgOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 0;
+    pointer-events: none;
+    transition: background 0.3s;
+}
+
+main,
+#changeBackground,
+#brightnessBtn {
+    position: relative;
+    z-index: 1;
+}
+
+#brightnessBtn {
+   width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    left: 260px;
+    top: 20px;
+    color: white;
+    font-size: 18px;
+    /* NO display: flex here */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+}
+
+#brightnessSlider {
+    position: fixed;
+    left: 320px;
+    top: 32px;
+    z-index: 999;
+    width: 110px;
+    display: none;
+    /* hidden until button clicked */
+    accent-color: white;
 }
 
 /*----------------------time and weather--------------*/
@@ -70,6 +186,8 @@ body {
 
     margin-top: 50px;
     height: fit-content;
+
+
 
 }
 
@@ -217,7 +335,7 @@ body {
     position: absolute;
     right: -10px;
     /* Align to the right of input */
-   
+
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -226,7 +344,7 @@ body {
     background-color: transparent;
     /* No background */
     font-size: 14px;
-    margin-left:5px;
+    margin-left: 5px;
     /* Adjust internal spacing */
     cursor: pointer;
     /* Show pointer on hover */
@@ -371,6 +489,8 @@ header h1 {
     text-align: center;
     color: rgb(246, 244, 242);
     margin-top: 60px;
+    font-family: 'Alegreya';
+    font-size: 5rem;
 }
 
 /* Icon size */
@@ -455,11 +575,11 @@ ul li {
 
     display: flex;
     /* Places text, stars, and delete button in one row */
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-items: flex-start;
     /* Align items to the top instead of vertical center
        so long multi-line text looks cleaner */
-  
+
     list-style: none;
     /* removes default bullet points */
 
@@ -511,7 +631,7 @@ ul li::before {
     top: 18px;
 }
 
- /*Change icon when task is checked */
+/*Change icon when task is checked */
 ul li.checked::before {
     background-image: url(../images/checkedToDoList.png);
 }
@@ -562,17 +682,44 @@ ul li.checked::before {
     pointer-events: none;
 
     /* smooth pop-in */
-    animation: popIn 0.8s ease;
-
+    animation: popIn 2s ease;
 }
 
-    @keyframes popIn {
-    0%   { transform: scale(0);   opacity: 0; }
-    40%  { transform: scale(1.8); opacity: 1; } /* bigger */
-    
-    80%  { transform: scale(2.5); opacity: 1; } /* bigger */
-    100% { transform: scale(1.8);   opacity: 1; } /* normal */
+@keyframes popIn {
+    0% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        background-color: yellow;
+        left: 200px;
+        top: 0px;
+    }
+
+    50% {
+        background-color: blue;
+        left: 200px;
+        top: 200px;
+        transform: scale(1.5);
+    }
+
+    75% {
+        background-color: green;
+        left: 0px;
+        top: 200px;
+        transform: scale(1.5);
+    }
+
+    100% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+    }
 }
+
+
 
 ul li .task-text {
     flex: 1 1 auto;
@@ -609,14 +756,14 @@ ul li .task-stars {
 ul li .task-stars span {
     color: #a79494;
     cursor: pointer;
-    display: inline-block;        
-   
+    display: inline-block;
+
 }
 
 ul li .task-stars span.active-star {
     color: rgb(255, 111, 0);
     transform: scale(1.1);
-     text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
     /* gold glow effect */
 }
 
@@ -685,9 +832,9 @@ ul li .delete-btn:hover {
     }
 
     ul li .task-stars {
-        margin-left: 50px;
+        margin-right: 0;
         width: auto;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     ul li .delete-btn {
