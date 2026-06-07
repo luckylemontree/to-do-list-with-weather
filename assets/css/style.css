@@ -15,7 +15,8 @@
 /* Body styling with font and gradient background */
 body {
     font-family: 'Nunito', sans-serif;
-    background: url('../images/background.webp') no-repeat center center fixed;
+    /* Default scene (Dawn) — JS may swap this for another gradient on load */
+    background: linear-gradient(160deg, #8eb8e5 0%, #e0a06a 60%, #e3855a 100%) no-repeat center center fixed;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -26,22 +27,29 @@ body {
        Top buttons
  ==============================*/
 
+/* Toolbar that lays the control buttons out in a row */
+.controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Shared glassy style for every control button */
 #click,
 #changeBackground,
 #accentBtn,
 #textBtn,
 #brightnessBtn {
-    width: 50px;
     height: 50px;
-    border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
-    position: fixed;
-    top: 20px;
-    /* NO display: flex here */
+    /* NO display: flex on the hidden ones here */
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 999;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -51,23 +59,41 @@ body {
     overflow: hidden;
 }
 
-#changeBackground,
+/* Round icon buttons (click / accent / text) */
+#click,
 #accentBtn,
-#textBtn,
-#brightnessBtn,
-#brightnessSlider {
+#textBtn {
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* Pill buttons with an icon + label (Scene / Light) */
+.pill-btn {
+    display: none;
+    /* shown via JS when the toolbar is open */
+    gap: 7px;
+    padding: 0 18px;
+    border-radius: 25px;
+    white-space: nowrap;
+}
+
+.pill-btn .pill-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.pill-btn .pill-label {
+    font-size: 15px;
+}
+
+/* Hidden until the "click" button opens the toolbar */
+#accentBtn,
+#textBtn {
     display: none;
 }
 
 #click {
-    left: 20px;  
-    display:flex;
-  
-}
-
-/* change the background image*/
-#changeBackground {
-    left: 80px;
+    display: flex;
 }
 
 /* Applied by JavaScript when clicked */
@@ -75,16 +101,6 @@ body {
     animation: moveAround 1s linear;
     /* animation on the button itself */
 
-}
-
-
-/*-------------colour  and text picker------------*/
-#accentBtn {
-    left: 140px;
-}
-
-#textBtn {
-    left: 200px;
 }
 
 
@@ -167,9 +183,60 @@ body {
     border-radius: 4px;
 }
 
-/*-----------------for the change the background color-----*/
-#brightnessBtn {
-    left: 260px;
+/*-------------- scene (background gradient) picker ----------------*/
+.scene-popup {
+    min-width: 230px;
+}
+
+.scene-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.scene-swatch {
+    position: relative;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.scene-swatch:hover {
+    border-color: #333;
+    transform: scale(1.05);
+}
+
+.scene-swatch.active {
+    border-color: #2c3e50;
+}
+
+.scene-name {
+    position: absolute;
+    left: 6px;
+    bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+/* Gradient previews — also reused as the page background via JS */
+.scene-swatch[data-scene="dawn"]   { background: linear-gradient(160deg, #8eb8e5 0%, #e0a06a 60%, #e3855a 100%); }
+.scene-swatch[data-scene="golden"] { background: linear-gradient(160deg, #f4922f 0%, #f6c463 100%); }
+.scene-swatch[data-scene="forest"] { background: linear-gradient(160deg, #2f5d4c 0%, #6fa085 100%); }
+.scene-swatch[data-scene="dusk"]   { background: linear-gradient(160deg, #463c6b 0%, #7d5c93 60%, #c98a73 100%); }
+.scene-swatch[data-scene="desert"] { background: linear-gradient(160deg, #d99a5b 0%, #ecca97 100%); }
+.scene-swatch[data-scene="sea"]    { background: linear-gradient(160deg, #2f8d99 0%, #93d2d8 100%); }
+
+/*-----------------brightness / dark-mode overlay-----------*/
+/* "Light" pill switches to its dark state when the page is dimmed */
+#brightnessBtn.dark {
+    background: rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 #bgOverlay {
@@ -179,16 +246,6 @@ body {
     z-index: 0;
     pointer-events: none;
     transition: background 0.3s;
-}
-
-
-#brightnessSlider {
-    position: fixed;
-    left: 320px;
-    top: 32px;
-    z-index: 999;
-    width: 110px;
-    accent-color: white;
 }
 
 /*=============================================
@@ -827,18 +884,32 @@ ul li .delete-btn:hover {
 /* Apply these styles only when screen width is 500px or smaller */
 @media (max-width: 500px) {
     
-    #click,
-#changeBackground,
-#accentBtn,
-#textBtn,
-#brightnessBtn {
-    width: 40px;
-    height: 40px;
-}
+    .controls {
+        gap: 6px;
+    }
 
-#brightnessSlider {
-    left:300px;
-}
+    #click,
+    #accentBtn,
+    #textBtn {
+        width: 42px;
+    }
+
+    #click,
+    #changeBackground,
+    #accentBtn,
+    #textBtn,
+    #brightnessBtn {
+        height: 42px;
+        font-size: 16px;
+    }
+
+    .pill-btn {
+        padding: 0 12px;
+    }
+
+    .pill-btn .pill-label {
+        font-size: 13px;
+    }
     /* Responsive layout for small screens */
     .todo-app {
         max-width: 360px;

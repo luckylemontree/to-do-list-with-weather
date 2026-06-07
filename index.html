@@ -25,23 +25,45 @@
 <body>
     <!--- button for change the background image and color-->
     <header>
-        <div id="click">
-            <span class="btn-click">click</span>
+        <div class="controls">
+            <div id="click">
+                <span class="btn-click">click</span>
+            </div>
+
+            <!--change background (Scene)-->
+            <div id="changeBackground" class="pill-btn" title="Scene">
+                <span class="pill-icon">🖼️</span>
+                <span class="pill-label">Scene</span>
+            </div>
+
+            <!--  accent colour picker -->
+            <div id="accentBtn" title="Accent colour">
+                <span>🎨</span>
+            </div>
+
+            <!--  text colour picker -->
+            <div id="textBtn" title="Text colour">
+                <span>T</span>
+            </div>
+
+            <!-- brightness / dark-mode toggle (Light) -->
+            <div id="brightnessBtn" class="pill-btn" title="Brightness">
+                <span class="pill-icon">☀</span>
+                <span class="pill-label">Light</span>
+            </div>
         </div>
 
-        <!--change background-->
-        <div id="changeBackground">
-            <span class="btn-text">🏞️</span>
-        </div>
-
-        <!--  accent colour picker -->
-        <div id="accentBtn" title="Accent colour">
-            <span>🎨</span>
-        </div>
-
-        <!--  text colour picker -->
-        <div id="textBtn" title="Text colour">
-            <span>T</span>
+        <!-- Scene (background gradient) popup -->
+        <div id="scenePopup" class="color-popup scene-popup">
+            <p class="popup-label">Scene</p>
+            <div class="scene-grid" id="sceneSwatches">
+                <span class="scene-swatch" data-scene="dawn"><span class="scene-name">Dawn</span></span>
+                <span class="scene-swatch" data-scene="golden"><span class="scene-name">Golden</span></span>
+                <span class="scene-swatch" data-scene="forest"><span class="scene-name">Forest</span></span>
+                <span class="scene-swatch" data-scene="dusk"><span class="scene-name">Dusk</span></span>
+                <span class="scene-swatch" data-scene="desert"><span class="scene-name">Desert</span></span>
+                <span class="scene-swatch" data-scene="sea"><span class="scene-name">Sea</span></span>
+            </div>
         </div>
 
         <!-- Accent colour popup -->
@@ -76,11 +98,8 @@
             <label class="custom-color-label">Custom <input type="color" id="textColor" value="#f6f4f2"></label>
         </div>
 
-        <!-- overlay for brightness -->
+        <!-- overlay used to darken the page when "Light" is toggled to dark -->
         <div id="bgOverlay"></div>
-        <div id="brightnessBtn" onclick="toggleBrightness()">☀</div>
-        <label for="brightnessSlider" class="visually-hidden">Brightness</label>
-        <input type="range" id="brightnessSlider" min="0" max="80" value="0" step="1" title="Brightness" aria-label="Brightness slider">
     </header>
 
 

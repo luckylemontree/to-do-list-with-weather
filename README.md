@@ -1,117 +1,257 @@
-﻿# To-Do List with Weather API
+# To-Do List with Weather API
 
-A responsive, browser-based web app that combines a local task manager with live weather lookup.
-![alt text](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
-This project demonstrates how to build a static frontend application using HTML, CSS, JavaScript, Bootstrap, and external API integration.
+🔗 Live Site: https://luckylemontree.github.io/to-do-list-with-weather-API/
 
-## Features
+---
 
-- Add, complete, and delete to-do items.
-- Persist tasks in the browser using `localStorage` so they remain after refresh.
-- Search live weather by city name using OpenWeatherMap.
-- Display weather details including temperature, conditions, humidity, and wind speed.
-- Responsive layout suitable for desktop and mobile devices.
-- Simple and accessible UI with clear feedback and user interaction.
+## Table of Contents
 
-## Project Structure
+- [Mockups](#mockups)
+- [Wireframes](#wireframes)
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Goals & Objectives](#goals--objectives)
+- [Target Audience](#target-audience)
+- [User Stories](#user-stories)
+- [Site Structure](#site-structure)
+- [Testing & Validation](#testing--validation)
+- [ESLint Results](#eslint-results)
+- [Design Decisions](#design-decisions)
+- [Pages Overview](#pages-overview)
+- [Technologies Used](#technologies-used)
+- [Limitations & Future Improvements](#limitations--future-improvements)
+- [Colour Palette](#colour-palette)
+- [AI Usage Declaration](#ai-usage-declaration)
+- [Author](#author)
 
-- `index.html` — main application page with the to-do list and weather search interface.
-- `assets/css/style.css` — custom styling for layout and responsiveness.
-- `assets/js/script.js` — application logic for task management and weather API requests.
-- `assets/images/` — icon and image assets used in the interface.
-- `responsive.png`, `validation css.png`, `validation index html.png`, `validation lighthouse.png` — image files included for project validation and preview.
+---
+
+## Mockups
+
+![Responsive Mockup](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
+
+---
 
 ## Wireframes
 
-This project was planned with a simple, user-focused interface for desktop and mobile use:
+![Wireframe](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/wireframe.png)
 
-- Desktop wireframe shows the weather search panel and to-do list side-by-side.
-- Mobile wireframe stacks the weather search above the to-do list for easy vertical scrolling.
-- Input controls, task list, and weather results were designed for clear usability and responsive layout.
-![wireframe](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/wireframe.png)
-## How It Works
+- Desktop layout: to-do list and weather panel displayed side by side
+- Mobile layout: components stack vertically for clean scrolling
+- Header buttons and inputs are positioned for easy thumb access on mobile
 
-- Tasks are created when the user types a description and clicks `Add`.
-- Clicking a task toggles its completed state by applying a `checked` style.
-- Clicking the delete icon removes the task from the list.
-- All tasks are saved to `localStorage` automatically so they persist across page reloads.
-- The weather search sends a request to the OpenWeatherMap API and displays data in the weather panel.
+---
 
-## Usage
+## Project Overview
 
-1. Open `index.html` in a browser.
-2. Add a new task using the task input field and `Add` button.
-3. Click an existing task to mark it complete or incomplete.
-4. Remove a task by clicking the `×` icon next to it.
-5. Enter a city name in the weather search field and click the search button.
-6. View updated weather details in the panel.
+This project is a browser-based web application that combines two core features:
 
-## Local Development
+- A **To-Do List** where users can add, complete, rate, and delete tasks
+- A **Weather Checker** that displays real-time weather data based on the user's location or a searched city
 
-Serve the app using a simple static server from the project folder:
+The project demonstrates key front-end development skills, including:
 
-```powershell
-python -m http.server
+- JavaScript DOM manipulation and event handling
+- API integration using OpenWeatherMap
+- LocalStorage for persistent task data
+- Responsive and accessible design
+- Dynamic UI customisation (backgrounds, accent colours, brightness)
+
+---
+
+## Key Features
+
+- Add, complete, and delete tasks
+- Star rating system (1–5 stars) per task
+- Task counter showing remaining and total tasks
+- Auto-sort: unchecked tasks stay at the top
+- Tasks persist after page refresh using LocalStorage
+- Live clock and date display
+- Real-time weather data with auto-detected location
+- 8 interchangeable background images
+- Accent colour picker with preset swatches
+- Text colour picker with preset swatches
+- Brightness overlay slider
+- Frosted glass UI effect throughout
+
+---
+
+## Goals & Objectives
+
+- Build a practical task management tool with persistent state
+- Integrate a real-world weather API with geolocation support
+- Create a visually polished, responsive interface
+- Provide UI customisation controls accessible on all screen sizes
+- Deliver an app that is both functional and enjoyable to use
+
+---
+
+## Target Audience
+
+- Students and professionals who want a simple daily task manager
+- Casual users who want a quick weather check alongside their task list
+- Users who appreciate visual customisation in their tools
+- Mobile and desktop users
+
+---
+
+## User Stories
+
+- As a user, I want to add tasks quickly so I can track what I need to do.
+- As a user, I want to mark tasks as complete so I can see my progress.
+- As a user, I want tasks to be saved so I don't lose them after closing the browser.
+- As a user, I want to rate tasks by importance using stars.
+- As a user, I want to check the weather for my current location automatically.
+- As a user, I want to search weather by city so I can plan ahead.
+- As a user, I want to change the background and colours to personalise the app.
+- As a user, I want the app to work well on my phone as well as my desktop.
+
+---
+
+## Site Structure
+
+```
+index.html          — Single-page application
+assets/
+  css/style.css     — All custom styles and responsive rules
+  js/script.js      — To-do logic, weather API, clock, and UI controls
+  images/           — Background images, weather icons, task icons
 ```
 
-Then open `http://localhost:8000` in your browser.
+---
 
-## API Configuration
+## Testing & Validation
 
-The weather search feature uses the OpenWeatherMap API.
+Validation screenshots are included in the repository:
 
-- The API key is currently stored in `assets/js/script.js`.
-- Replace the API key string with your own OpenWeatherMap key to avoid rate limits or expiration issues.
+- ![Responsive](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png) — Responsive layout across devices
+- ![CSS Validation](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20css.png) — CSS validated with W3C
+- ![HTML Validation](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20index%20html.png) — HTML validated with W3C
+- ![Lighthouse](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20lighthouse.png) — Lighthouse performance and accessibility report
 
-## Notes
+### Identified Issues
 
-- This is a static frontend project with no backend.
-- Task data is stored locally in the browser and is not synced to a server.
-- The app is ideal for learning DOM manipulation, browser storage, and API fetch operations.
+- Minor accessibility warnings on colour contrast in frosted glass areas
+- Native colour picker on mobile replaced with a custom swatch popup to avoid full-screen OS dialogs
 
-## Technologies
+---
+
+## ESLint Results
+
+Code quality was checked using ESLint.
+
+### Summary
+
+- 0 problems detected
+- All JavaScript files passed linting successfully
+- Code follows ESLint recommended best practices
+
+### Files Analysed
+
+- `assets/js/script.js` — 0 issues
+- `eslint.config.mjs` — 0 issues
+
+### Notes
+
+No errors or warnings were found, indicating clean and consistent code throughout the project.
+
+---
+
+## Design Decisions
+
+- **Frosted glass** — `backdrop-filter: blur()` applied across all panels for a modern, cohesive look
+- **Single page** — everything is accessible from one view with no navigation overhead
+- **Custom colour popups** — replaced native `<input type="color">` on mobile with a compact swatch popup to avoid the OS full-screen colour picker
+- **Auto-sort tasks** — unchecked tasks always appear above completed ones for clarity
+- **Geolocation first** — the app attempts GPS-based city detection, then falls back to IP-based detection
+
+---
+
+## Pages Overview
+
+### Main Page (`index.html`)
+
+- To-do list with star ratings, task counter, and LocalStorage persistence
+- Live clock and date (updates every second)
+- Weather panel with auto-detected city and manual city search
+- Header toolbar: background switcher, accent colour picker, text colour picker, brightness slider
+
+---
+
+## Technologies Used
 
 - HTML5
 - CSS3
-- JavaScript
 - Bootstrap 5
+- JavaScript (ES6)
 - OpenWeatherMap API
+- Google Fonts (Alegreya, Nunito)
+- Font Awesome
+- GitHub Pages (deployment)
 
-## Color Palette
+---
 
-The design uses a modern, dark theme with strong contrast for readability:
+## Limitations & Future Improvements
 
-- `#1a1a1a` — primary background
-- `#292929` — secondary background panels
-- `#404040` — card and element backgrounds
-- `#3b4252` — base accent and panel shading
-- `#666d7e` — secondary accent and muted text
-- `#c4ccdf` — main text and highlight color
-- `#88c0d0` — interactive accents and buttons
-- `#276271` — stronger accent for active elements
-![color]()
+### Current Limitations
 
-## Validation
+- No backend or user authentication
+- API key is stored client-side
+- Weather shows only current conditions, not a forecast
+- Colour and background preferences reset on page refresh
 
-This project includes validation checks to ensure code quality and compatibility:
+### Future Improvements
 
-- HTML validation for `index.html`
-- CSS validation for `assets/css/style.css`
-- Responsive design checks for desktop and mobile layouts
-- Lighthouse validation for basic accessibility and performance
+- 5-day weather forecast view
+- Celsius / Fahrenheit toggle
+- Save theme preferences in LocalStorage
+- Task categories and priority tags
+- Due dates and reminders
+- Drag-and-drop task reordering
+- Performance optimisation for background images
 
-Validation screenshots are included in the repository:
-- `responsive.png`![responsive.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
-- `validation css.png`![validation css.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20css.png)
-- `validation index html.png`![validation index html.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20index%20html.png)
-- `validation lighthouse.png`![validation index html.png](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20lighthouse.png)
+---
 
-## Credits
+## Colour Palette
 
-- Built as a combined to-do list and weather lookup app.
-- Weather data powered by OpenWeatherMap.
-- UI icons and layout enhanced with Bootstrap.
+The UI uses a warm, natural palette with frosted glass overlays:
 
-## License
+| Colour | Hex | Usage |
+|--------|-----|-------|
+| Orange | `#f77512` | Default accent — buttons, task borders, active stars |
+| Off-white | `#f6f4f2` | Default text colour |
+| Glass white | `rgba(255,255,255,0.2)` | Panel backgrounds |
+| Green tint | `rgb(195,249,228)` | Date display |
+| Pure white | `#ffffff` | Time display and weather text |
 
-This project is open for personal learning and demonstration use.
+---
+
+## AI Usage Declaration
+
+AI tools were used occasionally during this project to help with understanding concepts, checking code, and improving clarity.
+
+### How AI Was Used
+
+- **Code clarification** — Understanding JavaScript logic and debugging async functions
+- **Code validation & refinement** — Improving structure, accessibility, and ESLint compliance
+- **Image generation** — Background images generated with AI tools
+- **Documentation support** — Improving README clarity and structure
+
+### Learning Reflection
+
+Using AI contributed to:
+
+- Stronger understanding of API integration and geolocation
+- Better debugging habits for DOM and event handling
+- More professional documentation and code organisation
+
+### Tools Used
+
+- Claude (Anthropic)
+
+---
+
+## Author
+
+Ray  
+© 2026

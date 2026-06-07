@@ -14,7 +14,6 @@ const toggleBtns = [
     document.getElementById('brightnessBtn'),
 ];
 
-let brightnessSlider = document.getElementById('brightnessSlider');
 let menuOpen = false;
 
 clickBtn.addEventListener('click', function () {
@@ -22,9 +21,6 @@ clickBtn.addEventListener('click', function () {
     toggleBtns.forEach(btn => {
         btn.style.display = menuOpen ? 'flex' : 'none';
     });
-    if (!menuOpen) {
-        brightnessSlider.style.display = 'none';
-    }
 });
 
 // Colour apply helpers
@@ -45,6 +41,7 @@ function applyTextColor(color) {
 function closeColorPopups() {
     document.getElementById('accentPopup').style.display = 'none';
     document.getElementById('textPopup').style.display = 'none';
+    document.getElementById('scenePopup').style.display = 'none';
 }
 
 // Toggle accent popup
@@ -68,6 +65,7 @@ document.getElementById('textBtn').addEventListener('click', function (e) {
 // Prevent clicks inside popups from closing them
 document.getElementById('accentPopup').addEventListener('click', e => e.stopPropagation());
 document.getElementById('textPopup').addEventListener('click', e => e.stopPropagation());
+document.getElementById('scenePopup').addEventListener('click', e => e.stopPropagation());
 
 // Close popups when clicking anywhere outside
 document.addEventListener('click', closeColorPopups);
@@ -101,39 +99,78 @@ document.getElementById('textColor').addEventListener('input', function () {
     applyTextColor(this.value);
 });
 
-// Brightness toggle 
-function toggleBrightness() { 
-        brightnessSlider.style.display = brightnessSlider.style.display === 'block' ? 'none' : 'block'; }
+// Light / Dark toggle — the "Light" pill dims the page with a dark overlay
+const brightnessBtn = document.getElementById('brightnessBtn');
+const bgOverlay = document.getElementById('bgOverlay');
+const DARK_ALPHA = 0.45;
+let darkMode = false;
 
+function applyDarkMode(on) {
+    darkMode = on;
+    bgOverlay.style.background = on ? `rgba(0, 0, 0, ${DARK_ALPHA})` : 'rgba(0, 0, 0, 0)';
+    brightnessBtn.classList.toggle('dark', on);
+    // Swap the icon + label between Light (bright) and Dark (dimmed) states
+    brightnessBtn.querySelector('.pill-icon').textContent = on ? '🌙' : '☀';
+    brightnessBtn.querySelector('.pill-label').textContent = on ? 'Dark' : 'Light';
+    localStorage.setItem('darkMode', on ? '1' : '0');
+}
 
-brightnessSlider.addEventListener('input', function () {
-    const alpha = (this.value / 100).toFixed(2);
-     let bgOverlay = document.getElementById("bgOverlay");
-    bgOverlay.style.background = `rgba(0, 0, 0, ${alpha})`;
+brightnessBtn.addEventListener('click', function () {
+    applyDarkMode(!darkMode);
 });
 
-//----------------change background image----
-const backgrounds = [
-    "assets/images/background.webp",
-    "assets/images/mountain.webp",
-    "assets/images/rose.webp",
-    "assets/images/bluelight.webp",
-    "assets/images/skystars.webp",
-    "assets/images/green.webp",
-    "assets/images/littleorangeflower.webp",
-    "assets/images/purpleflower.webp"
-];
+// Restore the saved light/dark choice on load
+applyDarkMode(localStorage.getItem('darkMode') === '1');
 
-let currentBg = 0;
+//----------------change background: scene gradient picker----
+// Each scene maps to a CSS gradient. The same gradients are used as the
+// swatch previews in the popup (see .scene-swatch rules in style.css).
+const scenes = {
+    dawn:   "linear-gradient(160deg, #8eb8e5 0%, #e0a06a 60%, #e3855a 100%)",
+    golden: "linear-gradient(160deg, #f4922f 0%, #f6c463 100%)",
+    forest: "linear-gradient(160deg, #2f5d4c 0%, #6fa085 100%)",
+    dusk:   "linear-gradient(160deg, #463c6b 0%, #7d5c93 60%, #c98a73 100%)",
+    desert: "linear-gradient(160deg, #d99a5b 0%, #ecca97 100%)",
+    sea:    "linear-gradient(160deg, #2f8d99 0%, #93d2d8 100%)"
+};
 
-changeBtn.addEventListener('click', function () {
-    currentBg = (currentBg + 1) % backgrounds.length;
-    document.body.style.background = `url('${backgrounds[currentBg]}') no-repeat center center fixed`;
+// Apply a scene gradient as the fixed page background
+function applyScene(name) {
+    const gradient = scenes[name];
+    if (!gradient) return;
+    document.body.style.background = `${gradient} no-repeat center center fixed`;
     document.body.style.backgroundSize = "cover";
+    localStorage.setItem('scene', name);
+
+    // Highlight the active swatch in the popup
+    document.querySelectorAll('.scene-swatch').forEach(sw => {
+        sw.classList.toggle('active', sw.dataset.scene === name);
+    });
+}
+
+// 🏞️ button toggles the scene popup (matches the colour picker behaviour)
+changeBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const popup = document.getElementById('scenePopup');
+    const isOpen = popup.style.display === 'flex';
+    closeColorPopups();
+    popup.style.display = isOpen ? 'none' : 'flex';
+
     changeBtn.classList.remove('clicked');
     void changeBtn.offsetWidth;
     changeBtn.classList.add('clicked');
 });
+
+// Pick a scene from the popup grid
+document.getElementById('sceneSwatches').addEventListener('click', function (e) {
+    const swatch = e.target.closest('.scene-swatch');
+    if (!swatch) return;
+    applyScene(swatch.dataset.scene);
+    closeColorPopups();
+});
+
+// Restore the previously chosen scene on load
+applyScene(localStorage.getItem('scene') || 'dawn');
 //+++++++++++++++++++++++++++Script for date+++++++++++++++++++++++++
 
 // Get the HTML elements that display day, month, and year
