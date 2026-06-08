@@ -1,6 +1,8 @@
 # To-Do List with Weather API
 
+
 🔗 Live Site: https://luckylemontree.github.io/to-do-list-with-weather-API/
+
 
 ---
 
@@ -15,7 +17,6 @@
 - [User Stories](#user-stories)
 - [Site Structure](#site-structure)
 - [Testing & Validation](#testing--validation)
-- [ESLint Results](#eslint-results)
 - [Design Decisions](#design-decisions)
 - [Pages Overview](#pages-overview)
 - [Technologies Used](#technologies-used)
@@ -28,13 +29,16 @@
 
 ## Mockups
 
-![Responsive Mockup](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png)
+![Responsive Mockup](assets/images/validator/responsive.png)
+
 
 ---
 
 ## Wireframes
 
-![Wireframe](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/wireframe.png)
+![Wireframe — live layout reference](assets/images/validator/wireframe-2.svg)
+
+![Wireframe](assets/images/validator/wireframe.svg)
 
 - Desktop layout: to-do list and weather panel displayed side by side
 - Mobile layout: components stack vertically for clean scrolling
@@ -124,27 +128,30 @@ assets/
 
 Validation screenshots are included in the repository:
 
-- ![Responsive](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/responsive.png) — Responsive layout across devices
-- ![CSS Validation](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20css.png) — CSS validated with W3C
-- ![HTML Validation](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20index%20html.png) — HTML validated with W3C
-- ![Lighthouse](https://github.com/luckylemontree/to-do-list-with-weather-API/blob/main/validation%20lighthouse.png) — Lighthouse performance and accessibility report
+- ![Responsive](assets/images/validator/responsive.png) — Responsive layout across devices
+- ![CSS Validation](assets/images/validator/validation%20css.png) — CSS validated with W3C
+- ![HTML Validation](assets/images/validator/validation%20index%20html.png) — HTML validated with W3C
+- ![JavaScript Validation](assets/images/validator/Javascript-validator.png) — JavaScript validated with jShint 
+- ![Lighthouse](assets/images/validator/lighthouse1.png) — Lighthouse performance and accessibility report
+- ![Lighthouse](assets/images/validator/lighthouse2.png)
+- ![Lighthouse](assets/images/validator/lighthouse3.png)
+- ![Lighthouse](assets/images/validator/lighthouse4.png)
+- ![Lighthouse](assets/images/validator/lighthouse5.png)
+- ![Lighthouse](assets/images/validator/lighthouse6.png)
 
 ### Identified Issues
 
-- Minor accessibility warnings on colour contrast in frosted glass areas
-- Native colour picker on mobile replaced with a custom swatch popup to avoid full-screen OS dialogs
+- **Resolved:** Minor colour-contrast warnings on text in the frosted glass areas (date, time, weather, search placeholder, and task counter). Fixed by adding a dark `text-shadow` scrim behind the light text and darkening the task counter, keeping text legible above the WCAG 4.5:1 threshold across every scene.
+- **Design choice (not a defect):** On mobile, the native `<input type="color">` picker was replaced with a custom swatch popup to avoid the full-screen OS colour dialog covering the app.
 
 ---
 
-## ESLint Results
-
-Code quality was checked using ESLint.
 
 ### Summary
 
 - 0 problems detected
-- All JavaScript files passed linting successfully
-- Code follows ESLint recommended best practices
+- All JavaScript files passed  successfully
+
 
 ### Files Analysed
 
@@ -216,6 +223,8 @@ No errors or warnings were found, indicating clean and consistent code throughou
 
 The UI uses a warm, natural palette with frosted glass overlays:
 
+![Colour Palette](assets/images/validator/colour-palette.svg)
+
 | Colour | Hex | Usage |
 |--------|-----|-------|
 | Orange | `#f77512` | Default accent — buttons, task borders, active stars |
@@ -251,7 +260,3 @@ Using AI contributed to:
 
 ---
 
-## Author
-
-Ray  
-© 2026

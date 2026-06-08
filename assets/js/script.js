@@ -91,27 +91,44 @@ document.getElementById('textSwatches').addEventListener('click', function (e) {
 });
 
 // Custom colour inputs (native picker for exact colour)
+// Fires live as the user drags within the OS colour picker, so the
+// accent updates in real time rather than only on close.
 document.getElementById('accentColor').addEventListener('input', function () {
     applyAccentColor(this.value);
 });
 
+// Same live-update behaviour for the text colour picker.
 document.getElementById('textColor').addEventListener('input', function () {
     applyTextColor(this.value);
 });
 
 // Light / Dark toggle — the "Light" pill dims the page with a dark overlay
-const brightnessBtn = document.getElementById('brightnessBtn');
-const bgOverlay = document.getElementById('bgOverlay');
-const DARK_ALPHA = 0.45;
-let darkMode = false;
+const brightnessBtn = document.getElementById('brightnessBtn'); // the toggle pill button
+const bgOverlay = document.getElementById('bgOverlay');         // full-page tint layer
+const DARK_ALPHA = 0.45;                                        // opacity of the dark overlay
+const DARK_COLOR = '#111';                                      // colour used for text/panel in dark mode
+let darkMode = false;                                           // current toggle state
 
+// Apply (or clear) the dark overlay and sync the button's appearance + saved state.
 function applyDarkMode(on) {
     darkMode = on;
+    // Tint the page when dark; fully transparent (no dimming) when light.
     bgOverlay.style.background = on ? `rgba(0, 0, 0, ${DARK_ALPHA})` : 'rgba(0, 0, 0, 0)';
+
+    // In dark mode, darken the main text + to-do panel; otherwise clear the
+    // inline colour so the user's chosen text colour (or CSS default) takes over.
+    const textColor = on ? DARK_COLOR : '';
+    document.querySelectorAll('header h1, .date-session, .time-session, .weather-container, .weather-box, .weather-details').forEach(el => {
+        el.style.color = textColor;
+    });
+    document.querySelectorAll('.todo-app').forEach(s => s.style.backgroundColor = textColor);
+
+    // Toggle the CSS class that restyles the pill in dark mode.
     brightnessBtn.classList.toggle('dark', on);
     // Swap the icon + label between Light (bright) and Dark (dimmed) states
     brightnessBtn.querySelector('.pill-icon').textContent = on ? '🌙' : '☀';
     brightnessBtn.querySelector('.pill-label').textContent = on ? 'Dark' : 'Light';
+    // Persist the choice so it survives a page reload.
     localStorage.setItem('darkMode', on ? '1' : '0');
 }
 
@@ -238,7 +255,7 @@ async function checkWeather() {
 
         // Convert the response to a JavaScript object
         const data = await response.json();
-
+        console.log(data);
         // Expand the weather container height to show all weather info
 
         let weatherInfo = document.querySelector('.weather-info');

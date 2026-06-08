@@ -302,11 +302,13 @@ main {
 }
 
 .date-session {
-    color: rgb(195, 249, 228);
+    color: #eafff6;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .time-session {
     color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 
@@ -335,6 +337,8 @@ main {
     padding-top: 5px;
     position: relative;
     /* Allows absolute positioning inside */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    /* keeps light weather text legible over pale scenes */
 }
 
 /* Container for input and search button */
@@ -397,8 +401,8 @@ main {
 
 /* Style for placeholder text inside input */
 .search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.9);
-    /* Lighter color for placeholder */
+    color: #ffffff;
+    /* full white for stronger contrast on light scenes */
     font-size: 14px;
     font-weight: 500;
     text-transform: capitalize;
@@ -598,7 +602,7 @@ header h1 img {
 /*tasks counter*/
 #task-counter {
     text-align: right;
-    color: #888;
+    color: #595959;
     font-size: 14px;
     margin-bottom: 8px;
     font-weight: 600;
@@ -722,30 +726,6 @@ ul li.checked::before {
     background-image: url(../images/checkedToDoList.png);
 }
 
-/* Well done image — hidden by default ----for the img in future
-.wellDone-img {
-    display: none;
-    position: absolute;
-
-    /* center it over the task 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 120px;
-    z-index: 10;
-
-    /* smooth pop-in 
-    pointer-events: none;
-    /* so it doesn't block clicks 
-}
-
-/* Pop-in animation 
-@keyframes popIn {
-    0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-    70%  { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}*/
 
 /* Well done image — hidden by default */
 .wellDone-img {
@@ -761,7 +741,6 @@ ul li.checked::before {
     margin-right: auto;
 
     /* center it */
-    display: none;
     justify-content: center;
 
     z-index: 1;
@@ -773,29 +752,29 @@ ul li.checked::before {
 
 @keyframes popIn {
     0% {
-        background-color: red;
+        background-color: rgb(229, 255, 0);
         
     }
 
-    25% {
+    /*25% {
         background-color: yellow;
        
-    }
+    }*/
 
     50% {
-        background-color: blue;
+        background-color: rgb(250, 3, 196);
         
         transform: scale(1.5);
     }
 
-    75% {
+    /*75% {
         background-color: green;
        
         transform: scale(1.5);
-    }
+    }*/
 
     100% {
-        background-color: red;
+        background-color: rgb(255, 255, 0);
        
     }
 }

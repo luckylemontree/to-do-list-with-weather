@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- ===== styles ===== -->
+  <style>
+    .frame   { fill:#ffffff; stroke:#2b2b2b; stroke-width:2; }
+    .panel   { fill:#fafafa; stroke:#9a9a9a; stroke-width:1.5; }
+    .field   { fill:#ffffff; stroke:#9a9a9a; stroke-width:1.5; }
+    .btn     { fill:#e9e9e9; stroke:#6f6f6f; stroke-width:1.5; }
+    .chip    { fill:#efefef; stroke:#8a8a8a; stroke-width:1.5; }
+    .ph      { fill:#cfcfcf; }                /* placeholder bars */
+    .t       { fill:#2b2b2b; }
+    .tmut    { fill:#7a7a7a; }
+    .sec     { fill:#1f1f1f; font-weight:700; }
+    .icon    { fill:#dcdcdc; stroke:#9a9a9a; stroke-width:1.5; }
+  </style>
+
+  <!-- ===== title ===== -->
+  <text x="40" y="46" class="sec" font-size="26">Wireframes — To-Do List with Weather</text>
+  <line x1="40" y1="60" x2="1160" y2="60" stroke="#dcdcdc" stroke-width="2"/>
+
+  <!-- =========================================================
+       DESKTOP
+  ========================================================== -->
+  <text x="40" y="96" class="tmut" font-size="15" letter-spacing="2">DESKTOP  ·  ≥ 768px</text>
+  <rect x="40" y="110" width="820" height="560" rx="10" class="frame"/>
+
+  <!-- header controls row -->
+  <circle cx="80" cy="143" r="18" class="chip"/>
+  <text x="80" y="147" text-anchor="middle" class="t" font-size="11">click</text>
+  <rect x="110" y="128" width="70" height="30" rx="15" class="chip"/>
+  <text x="145" y="148" text-anchor="middle" class="t" font-size="13">🖼 Scene</text>
+  <circle cx="210" cy="143" r="16" class="chip"/>
+  <text x="210" y="148" text-anchor="middle" class="t" font-size="13">🎨</text>
+  <circle cx="252" cy="143" r="16" class="chip"/>
+  <text x="252" y="148" text-anchor="middle" class="t" font-size="13">T</text>
+  <rect x="278" y="128" width="100" height="30" rx="15" class="chip"/>
+  <text x="328" y="148" text-anchor="middle" class="t" font-size="13">☀ Light</text>
+
+  <!-- page heading -->
+  <text x="450" y="206" text-anchor="middle" class="sec" font-size="34">TO-DO LIST</text>
+
+  <!-- left: to-do panel (col-md-9) -->
+  <rect x="60" y="232" width="540" height="412" rx="10" class="panel"/>
+  <!-- task counter -->
+  <text x="572" y="262" text-anchor="end" class="tmut" font-size="16">tasks remaining / total</text>
+  <!-- input + add -->
+  <rect x="84" y="280" width="380" height="44" rx="22" class="field"/>
+  <text x="108" y="307" class="tmut" font-size="15">Add a new task…</text>
+  <rect x="476" y="280" width="100" height="44" rx="22" class="btn"/>
+  <text x="526" y="307" text-anchor="middle" class="t" font-size="15">Add</text>
+  <!-- task rows -->
+  <g>
+    <rect x="84" y="346" width="492" height="40" rx="8" class="field"/>
+    <rect x="100" y="360" width="14" height="14" rx="3" class="icon"/>
+    <rect x="128" y="362" width="240" height="10" rx="5" class="ph"/>
+    <text x="556" y="371" text-anchor="middle" class="tmut" font-size="14">✕</text>
+
+    <rect x="84" y="396" width="492" height="40" rx="8" class="field"/>
+    <rect x="100" y="410" width="14" height="14" rx="3" class="icon"/>
+    <rect x="128" y="412" width="300" height="10" rx="5" class="ph"/>
+    <text x="556" y="421" text-anchor="middle" class="tmut" font-size="14">✕</text>
+
+    <rect x="84" y="446" width="492" height="40" rx="8" class="field"/>
+    <rect x="100" y="460" width="14" height="14" rx="3" class="icon"/>
+    <rect x="128" y="462" width="190" height="10" rx="5" class="ph"/>
+    <text x="556" y="471" text-anchor="middle" class="tmut" font-size="14">✕</text>
+  </g>
+  <text x="330" y="500" text-anchor="middle" class="tmut" font-size="13" font-style="italic">task list</text>
+
+  <!-- right: date/time + weather (col-md-3) -->
+  <!-- date / time -->
+  <rect x="620" y="232" width="220" height="64" rx="10" class="panel"/>
+  <text x="730" y="258" text-anchor="middle" class="t" font-size="16">Date</text>
+  <text x="730" y="282" text-anchor="middle" class="t" font-size="16">Time</text>
+
+  <!-- weather search -->
+  <rect x="620" y="312" width="170" height="40" rx="20" class="field"/>
+  <text x="640" y="337" class="tmut" font-size="14">Enter city name</text>
+  <circle cx="820" cy="332" r="20" class="btn"/>
+  <text x="820" y="337" text-anchor="middle" class="t" font-size="14">🔍</text>
+
+  <!-- weather info -->
+  <rect x="620" y="368" width="220" height="276" rx="10" class="panel"/>
+  <text x="820" y="392" text-anchor="end" class="tmut" font-size="15">✕</text>
+  <circle cx="730" cy="432" r="32" class="icon"/>
+  <text x="730" y="494" text-anchor="middle" class="tmut" font-size="14">Weather description</text>
+  <text x="730" y="538" text-anchor="middle" class="t" font-size="18">Temperature</text>
+  <text x="730" y="568" text-anchor="middle" class="t" font-size="15">City name</text>
+  <line x1="644" y1="594" x2="816" y2="594" stroke="#e0e0e0" stroke-width="1.5"/>
+  <rect x="648" y="612" width="14" height="14" rx="3" class="icon"/>
+  <text x="672" y="624" class="tmut" font-size="12">Humidity</text>
+  <rect x="752" y="612" width="14" height="14" rx="3" class="icon"/>
+  <text x="776" y="624" class="tmut" font-size="12">Wind speed</text>
+
+  <!-- =========================================================
+       MOBILE
+  ========================================================== -->
+  <text x="910" y="96" class="tmut" font-size="15" letter-spacing="2">MOBILE  ·  &lt; 768px</text>
+  <rect x="910" y="110" width="250" height="560" rx="22" class="frame"/>
+
+  <!-- controls stack to a row -->
+  <circle cx="942" cy="141" r="13" class="chip"/>
+  <text x="942" y="144" text-anchor="middle" class="t" font-size="8">click</text>
+  <rect x="962" y="128" width="46" height="26" rx="13" class="chip"/>
+  <circle cx="1026" cy="141" r="12" class="chip"/>
+  <circle cx="1054" cy="141" r="12" class="chip"/>
+  <rect x="1074" y="128" width="54" height="26" rx="13" class="chip"/>
+
+  <text x="1035" y="190" text-anchor="middle" class="sec" font-size="22">TO-DO LIST</text>
+
+  <!-- todo panel -->
+  <rect x="930" y="208" width="210" height="232" rx="10" class="panel"/>
+  <text x="1124" y="230" text-anchor="end" class="tmut" font-size="11">remaining / total</text>
+  <rect x="946" y="244" width="130" height="36" rx="18" class="field"/>
+  <text x="962" y="267" class="tmut" font-size="12">Add a task…</text>
+  <rect x="1084" y="244" width="40" height="36" rx="18" class="btn"/>
+  <text x="1104" y="267" text-anchor="middle" class="t" font-size="12">+</text>
+  <rect x="946" y="298" width="178" height="34" rx="8" class="field"/>
+  <rect x="960" y="311" width="120" height="8" rx="4" class="ph"/>
+  <rect x="946" y="342" width="178" height="34" rx="8" class="field"/>
+  <rect x="960" y="355" width="150" height="8" rx="4" class="ph"/>
+  <rect x="946" y="386" width="178" height="34" rx="8" class="field"/>
+  <rect x="960" y="399" width="90" height="8" rx="4" class="ph"/>
+
+  <!-- date / time -->
+  <rect x="930" y="452" width="210" height="52" rx="10" class="panel"/>
+  <text x="1035" y="472" text-anchor="middle" class="t" font-size="13">Date</text>
+  <text x="1035" y="492" text-anchor="middle" class="t" font-size="13">Time</text>
+
+  <!-- weather -->
+  <rect x="930" y="516" width="210" height="138" rx="10" class="panel"/>
+  <rect x="946" y="530" width="140" height="32" rx="16" class="field"/>
+  <text x="962" y="551" class="tmut" font-size="12">Enter city…</text>
+  <circle cx="1110" cy="546" r="14" class="btn"/>
+  <circle cx="1010" cy="600" r="20" class="icon"/>
+  <text x="1075" y="596" class="t" font-size="13">Temp</text>
+  <text x="1075" y="618" class="tmut" font-size="11">City name</text>
+  <text x="1010" y="644" text-anchor="middle" class="tmut" font-size="10">Humidity · Wind</text>
+
+  <!-- ===== legend ===== -->
+  <text x="40" y="712" class="tmut" font-size="13">Layout follows index.html — header controls · to-do panel (col-md-9) · date/time + weather panel (col-md-3); stacked on mobile.</text>
+</svg>

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- ===== styles ===== -->
+  <style>
+    .frame   { fill:#ffffff; stroke:#2b2b2b; stroke-width:2; }
+    .panel   { fill:#fafafa; stroke:#9a9a9a; stroke-width:1.5; }
+    .field   { fill:#ffffff; stroke:#9a9a9a; stroke-width:1.5; }
+    .btn     { fill:#e9e9e9; stroke:#6f6f6f; stroke-width:1.5; }
+    .chip    { fill:#efefef; stroke:#8a8a8a; stroke-width:1.5; }
+    .ph      { fill:#cfcfcf; }
+    .t       { fill:#2b2b2b; }
+    .tmut    { fill:#7a7a7a; }
+    .sec     { fill:#1f1f1f; font-weight:700; }
+    .icon    { fill:#dcdcdc; stroke:#9a9a9a; stroke-width:1.5; }
+  </style>
+
+  <!-- ===== title ===== -->
+  <text x="40" y="46" class="sec" font-size="26">Wireframes — Live Layout Reference</text>
+  <line x1="40" y1="60" x2="1160" y2="60" stroke="#dcdcdc" stroke-width="2"/>
+
+  <!-- =========================================================
+       DESKTOP  (matches the live screenshot)
+  ========================================================== -->
+  <text x="40" y="96" class="tmut" font-size="15" letter-spacing="2">DESKTOP  ·  ≥ 768px</text>
+  <rect x="40" y="110" width="820" height="580" rx="10" class="frame"/>
+
+  <!-- round "click" button, top-left -->
+  <circle cx="78" cy="148" r="22" class="chip"/>
+  <text x="78" y="153" text-anchor="middle" class="t" font-size="12">click</text>
+  <text x="108" y="153" class="tmut" font-size="11" font-style="italic">(opens scene / colour / brightness controls)</text>
+
+  <!-- page heading -->
+  <text x="450" y="226" text-anchor="middle" class="sec" font-size="36">To-Do List</text>
+
+  <!-- left: to-do card -->
+  <rect x="60" y="262" width="540" height="402" rx="14" class="panel"/>
+  <text x="572" y="296" text-anchor="end" class="tmut" font-size="15">tasks remaining / total</text>
+  <!-- input + add -->
+  <rect x="84" y="312" width="380" height="46" rx="23" class="field"/>
+  <text x="108" y="340" class="tmut" font-size="15">Add a new task…</text>
+  <rect x="474" y="312" width="102" height="46" rx="23" class="btn"/>
+  <text x="525" y="340" text-anchor="middle" class="t" font-size="15">Add</text>
+  <!-- empty task area -->
+  <text x="330" y="500" text-anchor="middle" class="tmut" font-size="14" font-style="italic">task list — added items appear here</text>
+  <rect x="84" y="540" width="492" height="38" rx="8" class="field"/>
+  <rect x="100" y="553" width="14" height="14" rx="3" class="icon"/>
+  <rect x="128" y="555" width="240" height="10" rx="5" class="ph"/>
+  <text x="556" y="563" text-anchor="middle" class="tmut" font-size="14">✕</text>
+
+  <!-- right: date/time -->
+  <rect x="620" y="262" width="220" height="96" rx="14" class="panel"/>
+  <text x="730" y="300" text-anchor="middle" class="t" font-size="17">Date</text>
+  <text x="730" y="332" text-anchor="middle" class="t" font-size="17">Time</text>
+
+  <!-- right: weather panel -->
+  <rect x="620" y="374" width="220" height="290" rx="14" class="panel"/>
+  <rect x="636" y="392" width="150" height="38" rx="19" class="field"/>
+  <text x="654" y="416" class="tmut" font-size="13">Enter City Name</text>
+  <circle cx="812" cy="411" r="16" class="btn"/>
+  <text x="812" y="416" text-anchor="middle" class="t" font-size="12">🔍</text>
+  <text x="818" y="456" text-anchor="end" class="tmut" font-size="14">✕</text>
+  <circle cx="730" cy="492" r="30" class="icon"/>
+  <text x="730" y="548" text-anchor="middle" class="tmut" font-size="14">Weather description</text>
+  <text x="730" y="588" text-anchor="middle" class="t" font-size="17">Temperature</text>
+  <text x="730" y="614" text-anchor="middle" class="t" font-size="14">City name</text>
+  <rect x="648" y="634" width="14" height="14" rx="3" class="icon"/>
+  <text x="672" y="646" class="tmut" font-size="12">Humidity</text>
+  <rect x="752" y="634" width="14" height="14" rx="3" class="icon"/>
+  <text x="776" y="646" class="tmut" font-size="12">Wind speed</text>
+
+  <!-- =========================================================
+       MOBILE
+  ========================================================== -->
+  <text x="910" y="96" class="tmut" font-size="15" letter-spacing="2">MOBILE  ·  &lt; 768px</text>
+  <rect x="910" y="110" width="250" height="580" rx="22" class="frame"/>
+
+  <!-- click button -->
+  <circle cx="940" cy="142" r="16" class="chip"/>
+  <text x="940" y="146" text-anchor="middle" class="t" font-size="9">click</text>
+
+  <text x="1035" y="196" text-anchor="middle" class="sec" font-size="24">To-Do List</text>
+
+  <!-- todo card -->
+  <rect x="930" y="216" width="210" height="226" rx="12" class="panel"/>
+  <text x="1124" y="238" text-anchor="end" class="tmut" font-size="11">remaining / total</text>
+  <rect x="946" y="252" width="130" height="36" rx="18" class="field"/>
+  <text x="962" y="275" class="tmut" font-size="12">Add a task…</text>
+  <rect x="1084" y="252" width="40" height="36" rx="18" class="btn"/>
+  <text x="1104" y="275" text-anchor="middle" class="t" font-size="12">Add</text>
+  <text x="1035" y="370" text-anchor="middle" class="tmut" font-size="11" font-style="italic">task list</text>
+  <rect x="946" y="398" width="178" height="32" rx="8" class="field"/>
+  <rect x="960" y="410" width="120" height="8" rx="4" class="ph"/>
+
+  <!-- date / time -->
+  <rect x="930" y="454" width="210" height="60" rx="12" class="panel"/>
+  <text x="1035" y="478" text-anchor="middle" class="t" font-size="14">Date</text>
+  <text x="1035" y="502" text-anchor="middle" class="t" font-size="14">Time</text>
+
+  <!-- weather -->
+  <rect x="930" y="526" width="210" height="148" rx="12" class="panel"/>
+  <rect x="946" y="540" width="140" height="32" rx="16" class="field"/>
+  <text x="962" y="561" class="tmut" font-size="12">Enter City Name</text>
+  <circle cx="1110" cy="556" r="13" class="btn"/>
+  <circle cx="1006" cy="610" r="20" class="icon"/>
+  <text x="1078" y="600" class="t" font-size="13">Temp</text>
+  <text x="1078" y="622" class="tmut" font-size="11">City name</text>
+  <text x="1006" y="656" text-anchor="middle" class="tmut" font-size="10">Humidity · Wind</text>
+
+  <!-- ===== legend ===== -->
+  <text x="40" y="730" class="tmut" font-size="13">Mirrors the live app — round “click” reveals header controls · to-do card (col-md-9) · date/time + weather column (col-md-3); stacked on mobile.</text>
+</svg>
